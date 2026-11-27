@@ -64,7 +64,7 @@ if ( !empty( $is_preview ) ) $classes[] = 'is-preview';
       <address>
         <a href="<?php print esc_url( $info['map_url'] ); ?>" target="_blank" rel="noopener"><?php print esc_html( $info['address'] ); ?></a>
       </address>
-      <p class="skip-observing"><span class="vv-footer__live" aria-hidden="true"></span><?php print esc_html( $info['service'] ); ?></p>
+      <p class="skip-observing footer-service"><span class="vv-footer__live" aria-hidden="true"></span><?php print esc_html( $info['service'] ); ?></p>
     </div>
 
     <nav class="vv-footer__col" aria-label="Explora">
