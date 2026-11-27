@@ -88,7 +88,7 @@
         seq.to( lights, { yPercent: -28, scale: 0.86, opacity: 0.5, ease: 'none', duration: 1 }, 0 )
            .to( content, { y: lift, ease: 'none', duration: 1 }, 0 );
       }
-      if ( scroll ) seq.to( scroll, { opacity: 0, duration: 0.2 }, 0 );
+      if ( scroll ) seq.fromTo( scroll, { opacity: 1 }, { opacity: 0, duration: 0.2, immediateRender: false }, 0 );
       seq.add( function() {}, 1 );
 
       // Título, bajada y botones aparecen uno tras otro mientras se baja
