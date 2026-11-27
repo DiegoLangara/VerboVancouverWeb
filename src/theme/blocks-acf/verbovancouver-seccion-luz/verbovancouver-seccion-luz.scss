@@ -65,6 +65,35 @@
 
   .seccion-luz__body { display: grid; gap: .6rem; }
 
+  // Con logo: el nombre va arriba en ámbar (mismo estilo que el número), luego el logo y el texto.
+  .seccion-luz__card.has-logo {
+    grid-template-columns: 1fr auto;
+
+    .seccion-luz__label {
+      grid-column: 1 / -1;
+      padding-top: 0;
+      text-transform: uppercase;
+    }
+
+    .seccion-luz__body { grid-column: 1; gap: .9rem; }
+    .seccion-luz__arrow { grid-column: 2; grid-row: 2; }
+  }
+
+  .seccion-luz__logo {
+    display: block;
+
+    img {
+      display: block;
+      width: auto;
+      height: clamp(2.25rem, 1.8rem + 1.5vw, 3.25rem);
+      max-width: min(100%, 17rem);
+      object-fit: contain;
+      object-position: left center;
+    }
+  }
+
+  a.seccion-luz__card.has-logo:hover .seccion-luz__logo img { opacity: .85; }
+
   .seccion-luz__title {
     font-family: var(--wp--preset--font-family--heading, 'Archivo'), sans-serif;
     font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.25rem);

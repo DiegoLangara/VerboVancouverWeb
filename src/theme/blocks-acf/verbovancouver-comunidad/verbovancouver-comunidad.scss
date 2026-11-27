@@ -70,6 +70,7 @@
 
       &:hover, &:focus-visible {
         .comunidad__name { color: var(--vv-amber, #f2a65a); transform: translateX(.5rem); }
+        .comunidad__logo { transform: translateX(.5rem); opacity: 1; }
         &::before { height: 70%; }
       }
     }
@@ -84,6 +85,24 @@
     text-transform: uppercase;
     transition: color .3s, transform .4s var(--vv-ease, ease);
   }
+
+  // Logo del ministerio en lugar del nombre (el nombre queda para lectores de pantalla).
+  .comunidad__logo {
+    display: block;
+    opacity: .92;
+    transition: opacity .3s, transform .4s var(--vv-ease, ease);
+
+    img {
+      display: block;
+      width: auto;
+      height: clamp(2.25rem, 1.6rem + 2vw, 3.25rem);
+      max-width: min(100%, 18rem);
+      object-fit: contain;
+      object-position: left center;
+    }
+  }
+
+  a.has-logo { align-items: center; }
 
   .comunidad__tag {
     font-size: .8rem;

@@ -22,6 +22,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
         'button_label' => 'Añadir punto',
         'sub_fields'   => array(
           array( 'key' => 'field_vv_sl_item_title', 'label' => 'Título', 'name' => 'title', 'type' => 'text' ),
+          array( 'key' => 'field_vv_sl_item_logo', 'label' => 'Logo (opcional)', 'name' => 'logo', 'type' => 'image', 'return_format' => 'id', 'preview_size' => 'medium', 'library' => 'all', 'instructions' => 'Con logo, el título se muestra pequeño en ámbar arriba (en lugar del número) y el logo debajo. Usa el logo horizontal en blanco.' ),
           array( 'key' => 'field_vv_sl_item_text', 'label' => 'Texto', 'name' => 'text', 'type' => 'textarea', 'rows' => 3 ),
           array( 'key' => 'field_vv_sl_item_meta', 'label' => 'Detalle (versículo, horario, responsable)', 'name' => 'meta', 'type' => 'text' ),
           array( 'key' => 'field_vv_sl_item_url', 'label' => 'Enlace', 'name' => 'url', 'type' => 'text' ),

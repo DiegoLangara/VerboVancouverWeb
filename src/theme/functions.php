@@ -59,6 +59,12 @@ function vv_wordmark_svg( $class = 'vv-wordmark' ) {
 /**
  * Escapa un título y convierte *palabra* en <em>palabra</em> (se pinta en ámbar).
  */
+/** ID de un adjunto a partir del valor de un campo de imagen de ACF (ID, array o vacío). */
+function vv_image_id( $value ) {
+  if ( is_array( $value ) ) return (int) ( $value['ID'] ?? $value['id'] ?? 0 );
+  return (int) $value;
+}
+
 function vv_highlight( $text ) {
   return preg_replace( '/\*([^*]+)\*/', '<em>$1</em>', esc_html( (string) $text ) );
 }

@@ -29,12 +29,21 @@ $items   = !empty( $fields['items'] ) ? $fields['items'] : [
 
     <ol class="seccion-luz__items">
       <?php foreach ( $items as $i => $item ) :
-        $tag = !empty( $item['url'] ) ? 'a' : 'div'; ?>
+        $tag  = !empty( $item['url'] ) ? 'a' : 'div';
+        $logo = vv_image_id( $item['logo'] ?? 0 ); ?>
         <li class="seccion-luz__item"<?php if ( !empty( $item['anchor'] ) ) print ' id="' . esc_attr( $item['anchor'] ) . '"'; ?> data-reveal>
-          <<?php print $tag; ?> class="seccion-luz__card"<?php if ( 'a' === $tag ) print ' href="' . esc_url( $item['url'] ) . '"'; ?>>
-            <span class="seccion-luz__num" aria-hidden="true"><?php printf( '%02d', $i + 1 ); ?></span>
+          <<?php print $tag; ?> class="seccion-luz__card<?php if ( $logo ) print ' has-logo'; ?>"<?php if ( 'a' === $tag ) print ' href="' . esc_url( $item['url'] ) . '"'; ?>>
+            <?php if ( $logo ) : ?>
+              <span class="seccion-luz__num seccion-luz__label"><?php print esc_html( $item['title'] ?? '' ); ?></span>
+            <?php else : ?>
+              <span class="seccion-luz__num" aria-hidden="true"><?php printf( '%02d', $i + 1 ); ?></span>
+            <?php endif; ?>
             <span class="seccion-luz__body">
-              <span class="seccion-luz__title"><?php print esc_html( $item['title'] ?? '' ); ?></span>
+              <?php if ( $logo ) : ?>
+                <span class="seccion-luz__logo"><?php print wp_get_attachment_image( $logo, 'medium_large', false, [ 'alt' => '', 'loading' => 'lazy', 'aria-hidden' => 'true' ] ); ?></span>
+              <?php else : ?>
+                <span class="seccion-luz__title"><?php print esc_html( $item['title'] ?? '' ); ?></span>
+              <?php endif; ?>
               <?php if ( !empty( $item['text'] ) ) : ?><span class="seccion-luz__text"><?php print nl2br( esc_html( $item['text'] ) ); ?></span><?php endif; ?>
               <?php if ( !empty( $item['meta'] ) ) : ?><span class="seccion-luz__meta"><?php print esc_html( $item['meta'] ); ?></span><?php endif; ?>
             </span>

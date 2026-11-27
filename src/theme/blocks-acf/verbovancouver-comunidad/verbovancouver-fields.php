@@ -18,6 +18,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
         'layout'       => 'table',
         'button_label' => 'Añadir ministerio',
         'sub_fields'   => array(
+          array( 'key' => 'field_vv_comunidad_item_logo', 'label' => 'Logo', 'name' => 'logo', 'type' => 'image', 'return_format' => 'id', 'preview_size' => 'medium', 'library' => 'all', 'instructions' => 'Usa el logo horizontal en blanco (PNG o SVG). El nombre queda como texto para lectores de pantalla. Si no hay logo, se muestra el nombre.' ),
           array( 'key' => 'field_vv_comunidad_item_title', 'label' => 'Nombre', 'name' => 'title', 'type' => 'text' ),
           array( 'key' => 'field_vv_comunidad_item_tag', 'label' => 'Para quién', 'name' => 'tag', 'type' => 'text' ),
           array( 'key' => 'field_vv_comunidad_item_url', 'label' => 'Enlace', 'name' => 'url', 'type' => 'url' ),

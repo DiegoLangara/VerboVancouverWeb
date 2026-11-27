@@ -37,9 +37,15 @@ $items   = !empty( $fields['items'] ) ? $fields['items'] : [
     <ul class="comunidad__list">
       <?php foreach ( $items as $item ) : ?>
         <li data-reveal>
-          <a href="<?php print esc_url( $item['url'] ?: '#' ); ?>">
-            <span class="comunidad__name"><?php print esc_html( $item['title'] ); ?></span>
-            <span class="comunidad__tag"><?php print esc_html( $item['tag'] ); ?></span>
+          <?php $logo = vv_image_id( $item['logo'] ?? 0 ); ?>
+          <a href="<?php print esc_url( ( $item['url'] ?? '' ) ?: '#' ); ?>"<?php if ( $logo ) print ' class="has-logo"'; ?>>
+            <?php if ( $logo ) : ?>
+              <span class="comunidad__logo"><?php print wp_get_attachment_image( $logo, 'medium_large', false, [ 'alt' => '', 'loading' => 'lazy', 'aria-hidden' => 'true' ] ); ?></span>
+              <span class="comunidad__name screen-reader-text"><?php print esc_html( $item['title'] ?? '' ); ?></span>
+            <?php else : ?>
+              <span class="comunidad__name"><?php print esc_html( $item['title'] ?? '' ); ?></span>
+            <?php endif; ?>
+            <span class="comunidad__tag"><?php print esc_html( $item['tag'] ?? '' ); ?></span>
           </a>
         </li>
       <?php endforeach; ?>
