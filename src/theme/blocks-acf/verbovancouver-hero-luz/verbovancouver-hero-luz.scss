@@ -48,9 +48,15 @@
 
     &:nth-child(odd) { height: 48vh; }
 
-    &--cross {
+    // Brazo vertical de la cruz: más ancho y luminoso, y visible también por encima del travesaño
+    &.hero-luz__bar--cross {
+      position: relative;
+      z-index: 1;
+      width: 5px;
       height: 70vh;
-      opacity: 1;
+      opacity: 1 !important;
+      background: linear-gradient(to bottom, rgb(246 241 234 / .15), var(--hl-cream) 6%, var(--hl-cream) 55%, var(--hl-amber) 88%, transparent);
+      box-shadow: 0 0 22px rgb(246 241 234 / .65), 0 0 70px rgb(242 166 90 / .35);
     }
   }
 
@@ -62,6 +68,7 @@
     height: 3px;
     border-radius: 3px;
     transform: translateX(-50%);
+    z-index: 2;
     background: var(--hl-cream);
     box-shadow: 0 0 24px rgb(246 241 234 / .7);
   }
@@ -171,7 +178,7 @@
 
     .hero-luz__bar { height: 78%; opacity: .45; }
     .hero-luz__bar:nth-child(odd) { height: 62%; }
-    .hero-luz__bar--cross { height: 100%; opacity: .95; }
+    .hero-luz__bar.hero-luz__bar--cross { height: 100%; width: 4px; }
     .hero-luz__beam { top: 32%; width: 7.5rem; }
 
     .hero-luz__content {
