@@ -123,6 +123,8 @@ gulp.task('js-dependencies', function(){
   return gulp.src([
       './node_modules/@splidejs/splide/dist/js/splide.min.js',
       './node_modules/lity/dist/lity.js',
+      './node_modules/gsap/dist/gsap.min.js',
+      './node_modules/gsap/dist/ScrollTrigger.min.js',
       config.jsPath + '/misc/*.js'
     ])
     .pipe(plumber({ errorHandler: onError }))
@@ -230,4 +232,4 @@ gulp.task('watch', function(){
   gulp.watch([config.muPath + '/*', config.muPath + '/**/*'], gulp.series('mu'));
 });
 
-gulp.task('default', gulp.series('fonts', 'css', 'js-dependencies', 'js', 'php', 'json', 'html', 'acf-js', 'acf-css', 'plugins', 'mu'));
+gulp.task('default', gulp.series('fonts', 'images', 'css', 'js-dependencies', 'js', 'php', 'json', 'html', 'acf-js', 'acf-css', 'plugins', 'mu'));

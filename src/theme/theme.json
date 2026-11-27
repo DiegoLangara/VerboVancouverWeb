@@ -1,6 +1,6 @@
 {
   "$schema": "https://schemas.wp.org/trunk/theme.json",
-	"version": 3,
+  "version": 3,
   "settings": {
     "appearanceTools": true,
     "border": {
@@ -19,26 +19,41 @@
       "link": false,
       "palette": [
         {
-          "color": "#3E87CB",
-          "slug": "zenblue",
-          "name": "Zen Blue"
+          "color": "#0E0B0A",
+          "slug": "noche",
+          "name": "Noche"
         },
         {
-          "color": "#35495B",
-          "slug": "charcoal",
-          "name": "Charcoal"
+          "color": "#1A1412",
+          "slug": "noche-2",
+          "name": "Noche 2"
         },
         {
-          "color": "#F8F4EF",
-          "slug": "cloud",
-          "name": "Cloud"
+          "color": "#F6F1EA",
+          "slug": "crema",
+          "name": "Crema"
         },
         {
-          "color": "#A89579",
-          "slug": "ground",
-          "name": "Ground"
+          "color": "#F2A65A",
+          "slug": "ambar",
+          "name": "Ámbar"
         },
-         {
+        {
+          "color": "#D9483B",
+          "slug": "atardecer",
+          "name": "Atardecer"
+        },
+        {
+          "color": "#6C4BD8",
+          "slug": "violeta",
+          "name": "Violeta"
+        },
+        {
+          "color": "#41B5E8",
+          "slug": "azul-verbo",
+          "name": "Azul Verbo"
+        },
+        {
           "color": "#000000",
           "slug": "black",
           "name": "Black"
@@ -51,7 +66,6 @@
       ],
       "text": true
     },
-
     "layout": {
       "contentSize": "100%",
       "wideSize": "100%"
@@ -118,12 +132,12 @@
       ],
       "fontFamilies": [
         {
-          "fontFamily": "roboto, sans-serif",
+          "fontFamily": "\"Archivo\", \"Arial Narrow\", sans-serif",
           "name": "Headings",
           "slug": "heading"
         },
         {
-          "fontFamily": "roboto, sans-serif",
+          "fontFamily": "\"Manrope\", system-ui, sans-serif",
           "name": "Main Content",
           "slug": "main-content"
         }
@@ -138,9 +152,9 @@
       "width": ""
     },
     "color": {
-      "background": "var(--wp--preset--color--white)",
+      "background": "var(--wp--preset--color--noche)",
       "gradient": "",
-      "text": ""
+      "text": "var(--wp--preset--color--crema)"
     },
     "spacing": {
       "blockGap": "2em",
@@ -163,7 +177,7 @@
       "fontStyle": "",
       "fontWeight": "400",
       "letterSpacing": "",
-      "lineHeight": "1.875",
+      "lineHeight": "1.65",
       "textDecoration": "",
       "textTransform": ""
     },

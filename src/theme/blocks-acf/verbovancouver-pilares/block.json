@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "verbovancouver/pilares",
+  "title": "Pilares",
+  "description": "Adoración, Comunidad y Crecimiento con scroll horizontal.",
+  "style": "verbovancouver-pilares-css",
+  "script": "verbovancouver-pilares",
+  "category": "verbovancouver-blocks",
+  "icon": "columns",
+  "keywords": [
+    "pilares"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "verbovancouver-pilares.php",
+    "blockVersion": 3,
+    "autoInlineEditing": true,
+    "hideFieldsInSidebar": false
+  },
+  "styles": [],
+  "supports": {
+    "align": [
+      "full"
+    ],
+    "anchor": true,
+    "alignContent": false,
+    "color": {
+      "text": false,
+      "background": false,
+      "link": false
+    },
+    "alignText": false,
+    "fullHeight": false
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    }
+  }
+}

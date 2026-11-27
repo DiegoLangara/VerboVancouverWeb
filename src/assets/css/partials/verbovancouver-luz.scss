@@ -1,0 +1,160 @@
+/*
+ * "Luz que habita": tokens y piezas compartidas del rediseño.
+ * Fondo noche cálido, luz ámbar, atardecer y violeta del escenario, azul Verbo para acciones.
+ */
+
+:root {
+  --vv-night: var(--wp--preset--color--noche, #0e0b0a);
+  --vv-night-2: var(--wp--preset--color--noche-2, #1a1412);
+  --vv-cream: var(--wp--preset--color--crema, #f6f1ea);
+  --vv-amber: var(--wp--preset--color--ambar, #f2a65a);
+  --vv-sunset: var(--wp--preset--color--atardecer, #d9483b);
+  --vv-violet: var(--wp--preset--color--violeta, #6c4bd8);
+  --vv-blue: var(--wp--preset--color--azul-verbo, #41b5e8);
+  --vv-muted: rgb(246 241 234 / .7);
+  --vv-line: rgb(246 241 234 / .14);
+  --vv-ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+html { scroll-behavior: auto; }
+
+body {
+  background-color: var(--vv-night);
+  color: var(--vv-cream);
+}
+
+::selection { background: var(--vv-amber); color: var(--vv-night); }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--vv-blue);
+  outline-offset: 3px;
+}
+
+// Cabecera fija y transparente sobre el hero
+body > header.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  transition: background-color .4s var(--vv-ease), backdrop-filter .4s;
+
+  .header-group { padding: 1.25rem var(--outer--padding); }
+  .header-inner { align-items: center; gap: 2rem; }
+  .main-logo img { filter: brightness(0) invert(1); max-height: 56px; width: auto; }
+
+  .wp-block-navigation {
+    color: var(--vv-cream);
+    font-weight: 500;
+    gap: 1.75rem;
+
+    a { text-decoration: none; opacity: .8; transition: opacity .2s, color .2s; }
+    a:hover { opacity: 1; color: var(--vv-amber); }
+  }
+
+  .is-scrolling & {
+    background-color: rgb(14 11 10 / .78);
+    backdrop-filter: blur(14px);
+  }
+}
+
+// Pie
+body > footer.site-footer {
+  border-top: 1px solid var(--vv-line);
+  color: var(--vv-muted);
+  font-size: .95rem;
+
+  .footer-group { padding: 3rem var(--outer--padding); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+  a { color: inherit; }
+  a:hover { color: var(--vv-amber); }
+}
+
+// Piezas compartidas por los bloques
+.vv-wrap {
+  width: min(1280px, calc(100% - 2 * var(--outer--padding, 1.5rem)));
+  margin-inline: auto;
+}
+
+.vv-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  margin: 0 0 1.25rem;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--vv-blue);
+
+  &::before {
+    content: "";
+    width: 2px;
+    height: 1.4em;
+    background: var(--vv-amber);
+    box-shadow: 0 0 12px var(--vv-amber);
+  }
+}
+
+.vv-title {
+  margin: 0;
+  font-family: $font-family-heading;
+  font-size: clamp(2.6rem, 1.6rem + 4.5vw, 6rem);
+  font-weight: 700;
+  font-stretch: 75%;
+  line-height: .92;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: inherit;
+
+  em { font-style: normal; color: var(--vv-amber); }
+}
+
+.vv-lead {
+  max-width: 34rem;
+  margin: 1.5rem 0 0;
+  font-size: clamp(1.05rem, 1rem + .3vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--vv-muted);
+}
+
+.vv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .9rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color .2s, color .2s, border-color .2s, transform .3s var(--vv-ease);
+
+  &--light { background: var(--vv-amber); color: var(--vv-night); }
+  &--light:hover { background: var(--vv-cream); color: var(--vv-night); }
+  &--line { border: 1px solid rgb(246 241 234 / .4); color: var(--vv-cream); }
+  &--line:hover { border-color: var(--vv-amber); color: var(--vv-amber); }
+  &--dark { background: var(--vv-night); color: var(--vv-cream); }
+  &--dark:hover { background: var(--vv-sunset); color: var(--vv-cream); }
+
+  &::after {
+    content: "→";
+    transition: transform .3s var(--vv-ease);
+  }
+  &:hover::after { transform: translateX(4px); }
+}
+
+// Línea de luz vertical que separa secciones
+.vv-lightline {
+  display: block;
+  width: 2px;
+  height: 6rem;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, transparent, var(--vv-amber));
+  box-shadow: 0 0 14px rgb(242 166 90 / .6);
+}
+
+// Estado inicial de elementos que se revelan (solo si JS y movimiento están activos)
+.vv-motion [data-reveal] { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vv-motion [data-reveal] { opacity: 1; }
+}

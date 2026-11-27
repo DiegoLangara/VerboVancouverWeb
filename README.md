@@ -2,43 +2,38 @@
 
 Sitio nuevo de la Iglesia Cristiana Verbo Vancouver. Concepto visual: **"Luz que habita"**.
 
+Tema de bloques `verbovancouver` con bloques ACF (requiere ACF Pro) y gulp, que compila `src/` hacia `public_html/wp-content/`.
+
 ## Estructura
 
 ```
-theme/verbo-luz/   Tema WordPress a medida (PHP + Vite + GSAP + Lenis)
-  inc/             setup, carga de assets (manifest de Vite) y tipos de contenido
-  src/             CSS y JS fuente (se compilan a dist/)
+src/assets/   SCSS, JS e imágenes globales  → themes/verbovancouver/assets
+src/theme/    PHP, theme.json, plantillas y bloques ACF → themes/verbovancouver
+src/plugins/  → wp-content/plugins
+src/mu/       → wp-content/mu-plugins
 ```
 
-Tipos de contenido incluidos: Prédicas (con taxonomía Series), Eventos, Ministerios, IGHO, Testimonios y Líderes.
+## Bloques del homepage
 
-## Trabajar en el tema
+| Bloque | Qué hace |
+| --- | --- |
+| Hero Luz que habita | Barras de luz y cruz que se encienden y se abren con el scroll |
+| Pilares | Adoración, Comunidad y Crecimiento en paneles con scroll horizontal |
+| Planea tu visita | Horario, dirección, cómo llegar y cuenta regresiva al próximo servicio |
+| Última prédica | Video de YouTube con carga diferida |
+| Comunidad | Ministerios en lista que se ilumina al pasar |
+| Siguiente paso | Visitar, Conectar y Dar |
 
-Requisitos: Node 20+ y PHP 8.1+.
+Todos los bloques tienen textos por defecto, así que la plantilla `front-page.html` se ve completa recién instalada. Se editan desde el editor de bloques.
+
+## Compilar en el servidor dev
+
+Desde la carpeta del sitio (donde está `public_html`):
 
 ```bash
-cd theme/verbo-luz
+git pull
 npm install
-npm run build      # genera dist/ para el servidor
-npm run dev        # servidor de Vite con recarga en vivo
+./node_modules/.bin/gulp default      # o: gulp watch mientras se edita
 ```
 
-Para usar `npm run dev` con WordPress, añade en `wp-config.php` del entorno de desarrollo:
-
-```php
-define( 'VERBO_LUZ_VITE_DEV', true );
-```
-
-## Instalar en el servidor dev
-
-En el servidor (Virtualmin), dentro de `wp-content/themes/` del sitio dev:
-
-```bash
-git clone https://github.com/DiegoLangara/VerboVancouverWeb.git verbovancouverweb
-ln -s verbovancouverweb/theme/verbo-luz verbo-luz
-cd verbo-luz && npm ci && npm run build
-```
-
-Luego activa "Verbo Luz" en Apariencia → Temas. Para actualizar: `git pull && npm run build`.
-
-`dist/` no se versiona; se compila en el servidor.
+Las animaciones usan GSAP + ScrollTrigger (incluidos en `verbovancouver-libs.js`) y respetan `prefers-reduced-motion`.

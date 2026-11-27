@@ -1,0 +1,180 @@
+@import "functions";
+@import "../../assets/css/partials/vv-functions";
+
+@import "variables";
+@import "../../assets/css/partials/verbovancouver-variables";
+
+@import "mixins";
+@import "../../assets/css/partials/vv-mixins";
+
+
+.wp-block-vv-hero-luz {
+  --hl-night: var(--wp--preset--color--noche, #0e0b0a);
+  --hl-cream: var(--wp--preset--color--crema, #f6f1ea);
+  --hl-amber: var(--wp--preset--color--ambar, #f2a65a);
+  --hl-sunset: var(--wp--preset--color--atardecer, #d9483b);
+  --hl-violet: var(--wp--preset--color--violeta, #6c4bd8);
+  --hl-blue: var(--wp--preset--color--azul-verbo, #41b5e8);
+
+  position: relative;
+  display: grid;
+  align-items: end;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: 8rem clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem) 6rem;
+  color: var(--hl-cream);
+  background:
+    radial-gradient(120% 80% at 50% 100%, rgb(108 75 216 / .35), transparent 60%),
+    radial-gradient(80% 60% at 50% 110%, rgb(217 72 59 / .35), transparent 70%),
+    var(--hl-night);
+
+  .hero-luz__lights {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1.2rem, 4vw, 3.5rem);
+  }
+
+  .hero-luz__bar {
+    width: 3px;
+    height: 62vh;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, transparent, var(--hl-cream) 20%, var(--hl-amber) 80%, transparent);
+    box-shadow: 0 0 18px rgb(242 166 90 / .6), 0 0 60px rgb(242 166 90 / .25);
+    opacity: .55;
+    transform-origin: 50% 100%;
+
+    &:nth-child(odd) { height: 48vh; }
+
+    &--cross {
+      height: 70vh;
+      opacity: 1;
+    }
+  }
+
+  .hero-luz__beam {
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    width: clamp(5rem, 14vw, 11rem);
+    height: 3px;
+    border-radius: 3px;
+    transform: translateX(-50%);
+    background: var(--hl-cream);
+    box-shadow: 0 0 24px rgb(246 241 234 / .7);
+  }
+
+  .hero-luz__content {
+    position: relative;
+    max-width: 46rem;
+  }
+
+  .hero-luz__eyebrow {
+    margin: 0;
+    font-size: .75rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--hl-blue);
+  }
+
+  .hero-luz__heading {
+    margin: .25em 0;
+    font-size: clamp(3rem, 2rem + 6vw, 7.5rem);
+    font-weight: 600;
+    line-height: .95;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    color: var(--hl-cream);
+  }
+
+  .hero-luz__text {
+    max-width: 32rem;
+    font-size: 1.2rem;
+    color: rgb(246 241 234 / .72);
+  }
+
+  .hero-luz__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .hero-luz__btn {
+    display: inline-flex;
+    align-items: center;
+    padding: .85rem 1.4rem;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color .16s, color .16s, border-color .16s;
+
+    &--primary {
+      background: var(--hl-amber);
+      color: var(--hl-night);
+
+      &:hover, &:focus-visible { background: var(--hl-cream); color: var(--hl-night); }
+    }
+
+    &--secondary {
+      border: 1px solid rgb(246 241 234 / .4);
+      color: var(--hl-cream);
+
+      &:hover, &:focus-visible { border-color: var(--hl-amber); color: var(--hl-amber); }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--hl-blue);
+      outline-offset: 3px;
+    }
+  }
+
+  .hero-luz__heading { font-family: $font-family-heading; font-stretch: 75%; font-weight: 700; text-transform: uppercase; }
+
+  .hero-luz__scroll {
+    position: absolute;
+    right: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
+    bottom: 2rem;
+    writing-mode: vertical-rl;
+    font-size: .7rem;
+    letter-spacing: .4em;
+    text-transform: uppercase;
+    color: rgb(246 241 234 / .55);
+
+    &::after {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 3.5rem;
+      margin: .75rem auto 0;
+      background: linear-gradient(to bottom, var(--hl-amber), transparent);
+    }
+  }
+
+  // En móvil la luz queda arriba y el texto respira abajo
+  @media (max-width: 781px) {
+    .hero-luz__lights { align-items: flex-start; padding-top: 14vh; gap: 1.1rem; }
+    .hero-luz__bar { height: 38vh; opacity: .4; }
+    .hero-luz__bar:nth-child(odd) { height: 30vh; }
+    .hero-luz__bar--cross { height: 44vh; opacity: .9; }
+    .hero-luz__beam { top: 22vh; }
+    .hero-luz__content::before {
+      content: "";
+      position: absolute;
+      inset: -3rem -2rem -2rem;
+      z-index: -1;
+      background: linear-gradient(to top, var(--hl-night) 55%, transparent);
+    }
+  }
+
+  // Editor styles
+  &.is-preview {
+    min-height: 600px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 1ms !important; }
+  }
+}

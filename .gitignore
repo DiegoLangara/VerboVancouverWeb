@@ -20,6 +20,7 @@ yarn.lock
 *.jif
 *.jfif
 *.jfi
+!/src/assets/images/home-*.jpg
 
 # JPEG 2000
 *.jp2

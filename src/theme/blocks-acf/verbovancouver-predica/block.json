@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "verbovancouver/predica",
+  "title": "Última prédica",
+  "description": "Video destacado de YouTube con estado en vivo.",
+  "style": "verbovancouver-predica-css",
+  "script": "verbovancouver-predica",
+  "category": "verbovancouver-blocks",
+  "icon": "video-alt3",
+  "keywords": [
+    "predica"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "verbovancouver-predica.php",
+    "blockVersion": 3,
+    "autoInlineEditing": true,
+    "hideFieldsInSidebar": false
+  },
+  "styles": [],
+  "supports": {
+    "align": [
+      "full"
+    ],
+    "anchor": true,
+    "alignContent": false,
+    "color": {
+      "text": false,
+      "background": false,
+      "link": false
+    },
+    "alignText": false,
+    "fullHeight": false
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    }
+  }
+}

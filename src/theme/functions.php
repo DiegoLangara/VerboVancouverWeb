@@ -4,8 +4,15 @@ defined( 'ABSPATH' ) || die( 'Direct file access is prohibited.' );
 
 if ( ! isset( $content_width ) ) $content_width = 1920;
 
-if ( !defined( 'VV_FONT_URL' ) ) define( 'VV_FONT_URL', '' );
+if ( !defined( 'VV_FONT_URL' ) ) define( 'VV_FONT_URL', 'https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Manrope:wght@400;500;600;700&display=swap' );
 if ( !defined( 'VV_GMAPS_KEY' ) ) define( 'VV_GMAPS_KEY', '' );
+
+/**
+ * URL de una imagen incluida en el tema (assets/images), para valores por defecto de los bloques.
+ */
+function vv_theme_image( $file ) {
+  return get_template_directory_uri() . '/assets/images/' . ltrim( $file, '/' );
+}
 
 class VerboTheme {
 
@@ -284,7 +291,7 @@ class VerboTheme {
 
 
   // Additional custom blocks
-  $custom_blocks = array('accordion');
+  $custom_blocks = array('accordion', 'hero-luz', 'pilares', 'visita', 'predica', 'comunidad', 'pasos');
 
   foreach ($custom_blocks as $block) {
     // Register the block

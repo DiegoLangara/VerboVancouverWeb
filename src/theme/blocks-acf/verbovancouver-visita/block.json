@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "verbovancouver/visita",
+  "title": "Planea tu visita",
+  "description": "Horario, dirección y cuenta regresiva al próximo servicio.",
+  "style": "verbovancouver-visita-css",
+  "script": "verbovancouver-visita",
+  "category": "verbovancouver-blocks",
+  "icon": "location",
+  "keywords": [
+    "visita"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "verbovancouver-visita.php",
+    "blockVersion": 3,
+    "autoInlineEditing": true,
+    "hideFieldsInSidebar": false
+  },
+  "styles": [],
+  "supports": {
+    "align": [
+      "full"
+    ],
+    "anchor": true,
+    "alignContent": false,
+    "color": {
+      "text": false,
+      "background": false,
+      "link": false
+    },
+    "alignText": false,
+    "fullHeight": false
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    }
+  }
+}

@@ -495,3 +495,48 @@ for ( var i = 0; i < contentNodes.length; i++ ) {
   } );
 
 } )( jQuery );
+/**
+ * "Luz que habita": revelados al hacer scroll para cualquier elemento con data-reveal.
+ *   data-reveal         → sube y aparece
+ *   data-reveal="split" → el título aparece palabra por palabra (SplitType)
+ *   data-reveal="mask"  → la imagen se descubre con un corte diagonal
+ *   data-reveal="scale" → crece levemente al entrar
+ */
+( function() {
+
+  var reduce = window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+  if ( reduce || !window.gsap || !window.ScrollTrigger ) return;
+
+  document.documentElement.classList.add( 'vv-motion' );
+
+  document.addEventListener( 'DOMContentLoaded', function() {
+
+    var gsap = window.gsap;
+    gsap.registerPlugin( window.ScrollTrigger );
+
+    document.querySelectorAll( '[data-reveal]' ).forEach( function( el ) {
+      if ( el.closest( '.is-preview' ) ) { el.style.opacity = 1; return; }
+
+      var type = el.getAttribute( 'data-reveal' );
+      var trigger = { trigger: el, start: 'top 88%' };
+
+      gsap.set( el, { opacity: 1 } );
+
+      if ( 'split' === type && window.SplitType ) {
+        var split = new window.SplitType( el, { types: 'words' } );
+        gsap.from( split.words, { yPercent: 110, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.06, scrollTrigger: trigger } );
+      } else if ( 'mask' === type ) {
+        gsap.fromTo( el, { clipPath: 'polygon(0 100%, 100% 85%, 100% 100%, 0 100%)' }, { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 1.4, ease: 'expo.inOut', scrollTrigger: trigger } );
+        var img = el.querySelector( 'img' );
+        if ( img ) gsap.from( img, { scale: 1.25, duration: 1.8, ease: 'expo.out', scrollTrigger: trigger } );
+      } else if ( 'scale' === type ) {
+        gsap.from( el, { scale: 0.92, opacity: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: trigger } );
+      } else {
+        gsap.from( el, { y: 40, opacity: 0, duration: 1, ease: 'expo.out', scrollTrigger: trigger } );
+      }
+    } );
+
+    window.addEventListener( 'load', function() { window.ScrollTrigger.refresh(); } );
+  } );
+
+} )();
