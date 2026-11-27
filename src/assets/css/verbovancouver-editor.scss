@@ -7,7 +7,12 @@
 @import "mixins";
 @import "partials/vv-mixins";
 
-@import "partials/verbovancouver-general";
+// Este CSS se carga en toda la pantalla de wp-admin, no solo en el lienzo del editor.
+// Por eso los estilos generales del tema (texto crema, reboot, tipografía) se limitan al lienzo:
+// así no aclaran los textos ni cambian el tamaño de la ventana de medios, los menús y los paneles.
+.editor-styles-wrapper {
+  @import "partials/verbovancouver-general";
+}
 
 [class$="skeleton__content"] .editor-styles-wrapper, .editor-styles-wrapper {
 
