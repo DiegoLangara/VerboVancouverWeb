@@ -17,7 +17,13 @@ $channel = $fields['channel'] ?? 'https://www.youtube.com/channel/UC_vqNqKT2nOjL
 $video   = $fields['video'] ?? '';
 $id      = '';
 if ( $video && preg_match( '~(?:youtu\.be/|v=|/embed/|/live/|/shorts/)([A-Za-z0-9_-]{11})~', $video, $m ) ) $id = $m[1];
-$poster  = $id ? 'https://i.ytimg.com/vi/' . $id . '/maxresdefault.jpg' : vv_theme_image( 'home-crecimiento.jpg' );
+// Imagen elegida en la galería; si no hay, la miniatura del video; si tampoco hay video, la foto del tema.
+if ( !empty( $fields['image'] ) ) {
+  $poster = wp_get_attachment_image_url( is_array( $fields['image'] ) ? ( $fields['image']['ID'] ?? 0 ) : (int) $fields['image'], 'full' );
+}
+if ( empty( $poster ) ) {
+  $poster = $id ? 'https://i.ytimg.com/vi/' . $id . '/maxresdefault.jpg' : vv_theme_image( 'home-crecimiento.jpg' );
+}
 ?>
 <section <?php if ( !empty( $block['anchor'] ) ) print 'id="' . esc_attr( $block['anchor'] ) . '" '; ?>class="<?php print esc_attr( implode( ' ', $classes ) ); ?>" data-predica>
   <div class="predica__head vv-wrap">

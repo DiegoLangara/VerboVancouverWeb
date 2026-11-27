@@ -87,6 +87,7 @@ $defaults = [
     'heading' => 'Escucha la Palabra de esta semana',
     'speaker' => 'Reunión de celebración · Sábados 6:00 pm',
     'channel' => 'https://www.youtube.com/channel/UC_vqNqKT2nOjLyubHzqe7Kg',
+    'image'   => '@predica',
   ],
   'verbovancouver/comunidad' => [
     'eyebrow' => 'Comunidad',
@@ -136,6 +137,11 @@ function vv_fill_is_empty( $data, $key ) {
 /** Convierte nombres de archivo en IDs para los campos de imagen. */
 function vv_fill_value( $field, $value, $data ) {
   if ( 'image' === $field['type'] && is_string( $value ) ) {
+    // Prédica: si ya tiene video, se deja vacía para que siga usando la miniatura de YouTube.
+    if ( '@predica' === $value ) {
+      if ( !empty( $data['video'] ) ) return '';
+      $value = 'home-crecimiento.jpg';
+    }
     if ( '@image_file' === $value ) $value = !empty( $data['image_file'] ) ? $data['image_file'] : 'home-adoracion.jpg';
     return vv_fill_media( $value ) ?: '';
   }
