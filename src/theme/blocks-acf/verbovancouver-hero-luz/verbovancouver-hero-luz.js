@@ -23,22 +23,30 @@
 
     if ( hasST ) gsap.registerPlugin( window.ScrollTrigger );
 
-    // Movimiento reducido: solo un encendido suave, sin desplazamientos.
-    if ( reduce ) {
-      gsap.from( [ lights, content ], { opacity: 0, duration: 0.8, stagger: 0.2, ease: 'power1.out' } );
-      return;
-    }
+    // Con "reducir movimiento" activado se mantiene la secuencia, pero solo con fundidos:
+    // sin escalas ni desplazamientos (nada que produzca sensación de movimiento).
+    var soft = reduce;
+    var mm   = gsap.matchMedia();
 
-    var mm = gsap.matchMedia();
+    function intro( items ) {
+      var tl = gsap.timeline( { defaults: { ease: soft ? 'power1.out' : 'expo.out' } } );
+      if ( soft ) {
+        tl.fromTo( bars, { opacity: 0 }, { opacity: 0.6, duration: 1, stagger: { each: 0.05, from: 'center' } } )
+          .fromTo( beam, { opacity: 0 }, { opacity: 1, duration: 0.8 }, '-=0.5' )
+          .fromTo( items, { opacity: 0 }, { opacity: 1, duration: 0.8, stagger: 0.1 }, '-=0.4' );
+      } else {
+        tl.from( bars, { scaleY: 0, opacity: 0, duration: 1.6, stagger: { each: 0.06, from: 'center' } } )
+          .from( beam, { scaleX: 0, opacity: 0, duration: 1.2 }, '-=0.8' )
+          .fromTo( items, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1, stagger: 0.1 }, '-=0.9' );
+      }
+      return tl;
+    }
 
     // Escritorio y tablet
     mm.add( '(min-width: 782px)', function() {
-      gsap.timeline( { defaults: { ease: 'expo.out' } } )
-        .from( bars, { scaleY: 0, opacity: 0, duration: 1.6, stagger: { each: 0.06, from: 'center' } } )
-        .from( beam, { scaleX: 0, opacity: 0, duration: 1.2 }, '-=0.8' )
-        .from( [ eyebrow ].concat( Array.prototype.slice.call( rest ) ), { y: 30, opacity: 0, duration: 1, stagger: 0.1 }, '-=0.9' );
+      intro( [ eyebrow ].concat( Array.prototype.slice.call( rest ) ).filter( Boolean ) );
 
-      if ( hasST ) {
+      if ( hasST && !soft ) {
         gsap.to( lights, {
           scale: 1.6, opacity: 0.25, ease: 'none',
           scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true }
@@ -48,15 +56,12 @@
 
     // Móvil
     mm.add( '(max-width: 781px)', function() {
-      gsap.timeline( { defaults: { ease: 'expo.out' } } )
-        .from( bars, { scaleY: 0, opacity: 0, duration: 1.5, stagger: { each: 0.05, from: 'center' } } )
-        .from( beam, { scaleX: 0, opacity: 0, duration: 1.1 }, '-=0.8' )
-        .from( [ eyebrow, scroll ], { y: 20, opacity: 0, duration: 0.9, stagger: 0.1 }, '-=0.7' );
+      intro( [ eyebrow, scroll ].filter( Boolean ) );
 
       if ( !hasST ) return;
 
       hero.classList.add( 'is-sequenced' );
-      gsap.set( rest, { opacity: 0, y: 40 } );
+      gsap.set( rest, soft ? { opacity: 0 } : { opacity: 0, y: 40 } );
 
       // Cuánto debe subir el bloque de texto para que entre completo en pantalla
       function lift() {
@@ -74,22 +79,35 @@
           scrub: 0.6,
           invalidateOnRefresh: true
         }
-      } )
-        .to( lights, { yPercent: -28, scale: 0.86, opacity: 0.5, ease: 'none', duration: 1 }, 0 )
-        .to( content, { y: lift, ease: 'none', duration: 1 }, 0 )
-        .to( scroll, { opacity: 0, duration: 0.2 }, 0 )
-        .add( function() {}, 1 );
+      } );
+
+      if ( soft ) {
+        seq.to( lights, { opacity: 0.35, ease: 'none', duration: 1 }, 0 )
+           .to( content, { y: lift, ease: 'none', duration: 1 }, 0 );
+      } else {
+        seq.to( lights, { yPercent: -28, scale: 0.86, opacity: 0.5, ease: 'none', duration: 1 }, 0 )
+           .to( content, { y: lift, ease: 'none', duration: 1 }, 0 );
+      }
+      if ( scroll ) seq.to( scroll, { opacity: 0, duration: 0.2 }, 0 );
+      seq.add( function() {}, 1 );
 
       // Título, bajada y botones aparecen uno tras otro mientras se baja
       Array.prototype.forEach.call( rest, function( el, i ) {
-        seq.to( el, { opacity: 1, y: 0, duration: 0.35 }, 0.1 + i * 0.25 );
+        seq.to( el, soft ? { opacity: 1, duration: 0.35 } : { opacity: 1, y: 0, duration: 0.35 }, 0.1 + i * 0.25 );
       } );
+
+      // Red de seguridad: si el scroll no quedó activo, mostrar todo el texto
+      if ( !seq.scrollTrigger ) {
+        seq.kill();
+        gsap.set( rest, { clearProps: 'opacity,transform' } );
+        hero.classList.remove( 'is-sequenced' );
+      }
 
       return function() { hero.classList.remove( 'is-sequenced' ); };
     } );
 
     // Respiración de la luz, en todos los tamaños
-    gsap.to( bars, {
+    if ( !soft ) gsap.to( bars, {
       opacity: function() { return gsap.utils.random( 0.35, 0.9 ); },
       duration: function() { return gsap.utils.random( 2, 4 ); },
       repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 2,
@@ -98,7 +116,15 @@
   }
 
   $( document ).ready( function() {
-    document.querySelectorAll( '[data-hero-luz]' ).forEach( initHeroLuz );
+    document.querySelectorAll( '[data-hero-luz]' ).forEach( function( hero ) {
+      try { initHeroLuz( hero ); }
+      catch ( e ) {
+        // Si algo falla, el hero se muestra completo y sin animación
+        hero.classList.remove( 'is-sequenced' );
+        hero.querySelectorAll( '.hero-luz__content, .hero-luz__content > *, .hero-luz__lights' ).forEach( function( el ) { el.style.opacity = ''; el.style.transform = ''; } );
+        if ( window.console ) window.console.error( e );
+      }
+    } );
   } );
 
   // Vista previa en el editor de bloques.
