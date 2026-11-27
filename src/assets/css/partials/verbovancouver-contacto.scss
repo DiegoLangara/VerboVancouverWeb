@@ -57,7 +57,7 @@
     --bg-color: #fff;
     --bg-color-active: #fff;
     --border-color: rgb(14 11 10 / .16);
-    --border-color-active: var(--vv-sunset, #d9483b);
+    --border-color-active: var(--vv-blue, #2a479d);
     --border-radius: .75rem;
     --field-font-size: 1rem;
     --field-height: 3.25rem;
@@ -74,11 +74,11 @@
     --submit-bg-color: var(--vv-night, #0e0b0a);
     --submit-border-color: var(--vv-night, #0e0b0a);
     --submit-text-color: var(--vv-cream, #f6f1ea);
-    --submit-hover-bg-color: var(--vv-sunset, #d9483b);
-    --submit-hover-border-color: var(--vv-sunset, #d9483b);
+    --submit-hover-bg-color: var(--vv-blue, #2a479d);
+    --submit-hover-border-color: var(--vv-blue, #2a479d);
     --submit-hover-color: var(--vv-cream, #f6f1ea);
-    --submit-active-bg-color: var(--vv-sunset, #d9483b);
-    --submit-active-border-color: var(--vv-sunset, #d9483b);
+    --submit-active-bg-color: var(--vv-blue, #2a479d);
+    --submit-active-border-color: var(--vv-blue, #2a479d);
     --submit-active-color: var(--vv-cream, #f6f1ea);
     --submit-border-radius: 999px;
     --submit-font-size: 1rem;
@@ -143,7 +143,7 @@
       &:focus {
         outline: none;
         border-color: var(--border-color-active);
-        box-shadow: 0 0 0 3px rgb(217 72 59 / .15);
+        box-shadow: 0 0 0 3px rgb(42 71 157 / .18);
       }
     }
 

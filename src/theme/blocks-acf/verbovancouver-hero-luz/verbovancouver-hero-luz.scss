@@ -14,7 +14,8 @@
   --hl-amber: var(--wp--preset--color--ambar, #f2a65a);
   --hl-sunset: var(--wp--preset--color--atardecer, #d9483b);
   --hl-violet: var(--wp--preset--color--violeta, #6c4bd8);
-  --hl-blue: var(--wp--preset--color--azul-verbo, #41b5e8);
+  --hl-blue: var(--wp--preset--color--azul-verbo, #2a479d);
+  --hl-blue-soft: var(--wp--preset--color--azul-claro, #a3b5ee);
 
   position: relative;
   display: grid;
@@ -24,7 +25,7 @@
   padding: 8rem clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem) 6rem;
   color: var(--hl-cream);
   background:
-    radial-gradient(120% 80% at 50% 100%, rgb(108 75 216 / .35), transparent 60%),
+    radial-gradient(120% 80% at 50% 100%, rgb(42 71 157 / .55), transparent 60%),
     radial-gradient(80% 60% at 50% 110%, rgb(217 72 59 / .35), transparent 70%),
     var(--hl-night);
 
@@ -108,7 +109,7 @@
     font-size: .75rem;
     letter-spacing: .3em;
     text-transform: uppercase;
-    color: var(--hl-blue);
+    color: var(--hl-blue-soft);
   }
 
   .hero-luz__heading {
@@ -144,8 +145,8 @@
     transition: background-color .2s ease, color .2s ease, border-color .2s ease;
 
     &--primary {
-      background: var(--hl-amber);
-      color: var(--hl-night);
+      background: var(--hl-blue);
+      color: var(--hl-cream);
 
       &:hover, &:focus-visible { background: var(--hl-cream); color: var(--hl-night); }
     }
@@ -158,7 +159,7 @@
     }
 
     &:focus-visible {
-      outline: 2px solid var(--hl-blue);
+      outline: 2px solid var(--hl-blue-soft);
       outline-offset: 3px;
     }
   }

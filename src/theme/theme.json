@@ -49,9 +49,14 @@
           "name": "Violeta"
         },
         {
-          "color": "#41B5E8",
+          "color": "#2A479D",
           "slug": "azul-verbo",
           "name": "Azul Verbo"
+        },
+        {
+          "color": "#A3B5EE",
+          "name": "Azul claro",
+          "slug": "azul-claro"
         },
         {
           "color": "#000000",
@@ -132,12 +137,12 @@
       ],
       "fontFamilies": [
         {
-          "fontFamily": "\"Archivo\", \"Arial Narrow\", sans-serif",
+          "fontFamily": "\"angie-sans\", \"Archivo\", \"Arial Narrow\", sans-serif",
           "name": "Headings",
           "slug": "heading"
         },
         {
-          "fontFamily": "\"Manrope\", system-ui, sans-serif",
+          "fontFamily": "\"Montserrat\", system-ui, sans-serif",
           "name": "Main Content",
           "slug": "main-content"
         }

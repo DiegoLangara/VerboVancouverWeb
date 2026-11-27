@@ -95,8 +95,13 @@ function vv_social_icon( $network ) {
   return '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false">' . $icons[ $network ] . '</svg>';
 }
 
+/** Kit de Adobe Fonts con angie-sans (títulos). */
+if ( !defined( 'VV_TYPEKIT_URL' ) ) define( 'VV_TYPEKIT_URL', 'https://use.typekit.net/gqc7cvn.css' );
+
 add_action( 'wp_head', function() {
-  foreach ( [ 'archivo-latin-wdth-normal.woff2', 'manrope-latin-wght-normal.woff2' ] as $font ) {
+  print '<link rel="preconnect" href="https://use.typekit.net" crossorigin>' . "\n";
+  print '<link rel="preconnect" href="https://p.typekit.net" crossorigin>' . "\n";
+  foreach ( [ 'montserrat-latin-wght-normal.woff2' ] as $font ) {
     printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n", esc_url( get_template_directory_uri() . '/assets/fonts/' . $font ) );
   }
 }, 1 );
@@ -244,6 +249,8 @@ class VerboTheme {
     remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
     remove_action( 'admin_print_styles', 'print_emoji_styles' );
     
+    add_editor_style( 'assets/css/verbovancouver-fonts.css' );
+    if ( VV_TYPEKIT_URL ) add_editor_style( VV_TYPEKIT_URL );
     add_editor_style( 'assets/css/verbovancouver-editor.css' );
   }
 
@@ -456,6 +463,7 @@ class VerboTheme {
     
     if ( VV_FONT_URL ) wp_enqueue_style( 'verbovancouver-fonts', VV_FONT_URL, [], null );
     wp_enqueue_style( 'verbovancouver-fonts-local', get_theme_file_uri( 'assets/css/verbovancouver-fonts.css' ), [], vv_asset_version() );
+    if ( VV_TYPEKIT_URL ) wp_enqueue_style( 'verbovancouver-typekit', VV_TYPEKIT_URL, [], null );
     wp_enqueue_style( 'verbovancouver-base-style', get_theme_file_uri( 'assets/css/verbovancouver-editor.css' ), [ 'verbovancouver-fonts-local' ], vv_asset_version() );
   
     wp_enqueue_script( 'verbovancouver-block-editor', get_theme_file_uri( 'assets/js/verbovancouver-editor.js' ), [ 'wp-blocks', 'wp-dom', 'wp-edit-post', 'wp-editor' ], vv_asset_version());
@@ -508,6 +516,7 @@ class VerboTheme {
     
     if ( VV_FONT_URL ) wp_enqueue_style( 'verbovancouver-fonts', VV_FONT_URL, [], null );
     wp_enqueue_style( 'verbovancouver-fonts-local', get_template_directory_uri() . '/assets/css/verbovancouver-fonts.css', [], vv_asset_version() );
+    if ( VV_TYPEKIT_URL ) wp_enqueue_style( 'verbovancouver-typekit', VV_TYPEKIT_URL, [], null );
     wp_enqueue_style( 'select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css', vv_asset_version() );
     wp_enqueue_style( 'verbovancouver', get_template_directory_uri() . '/assets/css/verbovancouver.css', [], vv_asset_version() );
   }

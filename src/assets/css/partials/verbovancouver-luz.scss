@@ -10,7 +10,9 @@
   --vv-amber: var(--wp--preset--color--ambar, #f2a65a);
   --vv-sunset: var(--wp--preset--color--atardecer, #d9483b);
   --vv-violet: var(--wp--preset--color--violeta, #6c4bd8);
-  --vv-blue: var(--wp--preset--color--azul-verbo, #41b5e8);
+  --vv-blue: var(--wp--preset--color--azul-verbo, #2a479d);
+  --vv-blue-bright: #3a5cc0;
+  --vv-blue-soft: var(--wp--preset--color--azul-claro, #a3b5ee);
   --vv-muted: rgb(246 241 234 / .7);
   --vv-line: rgb(246 241 234 / .14);
   --vv-ease: cubic-bezier(.22, 1, .36, 1);
@@ -41,7 +43,7 @@ a:focus-visible,
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--vv-blue);
+  outline: 2px solid var(--vv-blue-soft);
   outline-offset: 3px;
 }
 
@@ -83,7 +85,7 @@ body > footer.site-footer {
   font-weight: 600;
   letter-spacing: .3em;
   text-transform: uppercase;
-  color: var(--vv-blue);
+  color: var(--vv-blue-soft);
 
   &::before {
     content: "";
@@ -128,12 +130,14 @@ body > footer.site-footer {
   text-decoration: none;
   transition: background-color .2s, color .2s, border-color .2s, transform .3s var(--vv-ease);
 
-  &--light { background: var(--vv-amber); color: var(--vv-night); }
+  &--light { background: var(--vv-blue); color: var(--vv-cream); }
   &--light:hover { background: var(--vv-cream); color: var(--vv-night); }
+  &--blue { background: var(--vv-blue); color: var(--vv-cream); }
+  &--blue:hover { background: var(--vv-blue-bright); color: var(--vv-cream); }
   &--line { border: 1px solid rgb(246 241 234 / .4); color: var(--vv-cream); }
   &--line:hover { border-color: var(--vv-amber); color: var(--vv-amber); }
   &--dark { background: var(--vv-night); color: var(--vv-cream); }
-  &--dark:hover { background: var(--vv-sunset); color: var(--vv-cream); }
+  &--dark:hover { background: var(--vv-blue); color: var(--vv-cream); }
 
   &::after {
     content: "→";

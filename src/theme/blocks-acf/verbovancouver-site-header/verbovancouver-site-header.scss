@@ -49,7 +49,7 @@ $vv-nav-bp: 1100px;
     line-height: 0;
     transition: color .3s, transform .5s var(--vv-ease);
 
-    &:hover { color: var(--vv-blue, #41b5e8); }
+    &:hover { color: var(--vv-blue-soft, #a3b5ee); }
 
     .vv-logo { width: 100%; height: auto; overflow: visible; }
   }
@@ -104,8 +104,8 @@ $vv-nav-bp: 1100px;
     gap: .6rem;
     padding: .7rem 1.25rem;
     border-radius: 999px;
-    background: var(--vv-blue, #41b5e8);
-    color: var(--vv-night, #0e0b0a);
+    background: var(--vv-blue, #2a479d);
+    color: var(--vv-cream, #f6f1ea);
     font-size: .92rem;
     font-weight: 700;
     text-decoration: none;
@@ -116,7 +116,7 @@ $vv-nav-bp: 1100px;
       background: var(--vv-cream, #f6f1ea);
       color: var(--vv-night, #0e0b0a);
       transform: translateY(-1px);
-      box-shadow: 0 10px 30px -10px rgb(65 181 232 / .7);
+      box-shadow: 0 10px 30px -10px rgb(42 71 157 / .8);
     }
 
     @media (min-width: 600px) { display: inline-flex; }
@@ -290,7 +290,7 @@ $vv-nav-bp: 1100px;
 
     small {
       color: var(--vv-amber, #f2a65a);
-      font-family: var(--wp--preset--font-family--body, 'Manrope'), sans-serif;
+      font-family: var(--wp--preset--font-family--main-content, 'Montserrat', sans-serif);
       font-size: .8rem;
       font-weight: 600;
       letter-spacing: .1em;
@@ -316,7 +316,7 @@ $vv-nav-bp: 1100px;
     justify-self: start;
     padding: .9rem 1.5rem;
     border-radius: 999px;
-    background: var(--vv-blue, #41b5e8);
+    background: var(--vv-blue, #2a479d);
     color: var(--vv-night, #0e0b0a);
     font-weight: 700;
     text-decoration: none;

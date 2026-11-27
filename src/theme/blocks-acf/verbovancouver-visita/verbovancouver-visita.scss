@@ -13,7 +13,7 @@
   background: var(--vv-cream, #f6f1ea);
 
   .vv-lead { color: rgb(14 11 10 / .72); }
-  .vv-eyebrow { color: var(--vv-sunset, #d9483b); }
+  .vv-eyebrow { color: var(--vv-blue, #2a479d); }
 
   .visita__grid {
     display: grid;
@@ -40,7 +40,7 @@
     border-block: 1px solid rgb(14 11 10 / .14);
 
     dt { font-size: .75rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; opacity: .6; }
-    dd { margin: .35rem 0 0; font-size: 1.2rem; font-weight: 600; }
+    dd { margin: .35rem 0 0; font-size: 1.2rem; font-weight: 600; line-height: 1.35; }
   }
 
   .visita__countdown {
@@ -59,11 +59,11 @@
     font-weight: 700;
     font-stretch: 75%;
     font-variant-numeric: tabular-nums;
-    color: var(--vv-sunset, #d9483b);
+    color: var(--vv-blue, #2a479d);
   }
 
   .visita__actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
 
   .vv-btn--line { border-color: rgb(14 11 10 / .35); color: var(--vv-night, #0e0b0a); }
-  .vv-btn--line:hover { border-color: var(--vv-sunset, #d9483b); color: var(--vv-sunset, #d9483b); }
+  .vv-btn--line:hover { border-color: var(--vv-blue, #2a479d); color: var(--vv-blue, #2a479d); }
 }

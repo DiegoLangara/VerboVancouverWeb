@@ -26,7 +26,7 @@
     border-top: 1px solid var(--vv-line, rgb(246 241 234 / .14));
     background:
       radial-gradient(60% 70% at 50% 115%, rgb(242 166 90 / .32), transparent 70%),
-      radial-gradient(40% 50% at 15% 100%, rgb(108 75 216 / .22), transparent 70%),
+      radial-gradient(40% 50% at 15% 100%, rgb(42 71 157 / .4), transparent 70%),
       radial-gradient(40% 50% at 85% 100%, rgb(217 72 59 / .2), transparent 70%);
     text-align: center;
     isolation: isolate;
@@ -92,11 +92,11 @@
     &:hover { border-color: var(--vv-cream, #f6f1ea); background: rgb(246 241 234 / .08); transform: translateY(-2px); }
 
     &--primary {
-      border-color: var(--vv-blue, #41b5e8);
-      background: var(--vv-blue, #41b5e8);
-      color: var(--vv-night, #0e0b0a) !important;
+      border-color: var(--vv-blue, #2a479d);
+      background: var(--vv-blue, #2a479d);
+      color: var(--vv-cream, #f6f1ea) !important;
 
-      &:hover { border-color: var(--vv-cream, #f6f1ea); background: var(--vv-cream, #f6f1ea); }
+      &:hover { border-color: var(--vv-cream, #f6f1ea); background: var(--vv-cream, #f6f1ea); color: var(--vv-night, #0e0b0a) !important; }
     }
   }
 
@@ -135,7 +135,7 @@
     color: var(--vv-cream, #f6f1ea) !important;
     line-height: 0;
 
-    &:hover { color: var(--vv-blue, #41b5e8) !important; }
+    &:hover { color: var(--vv-blue-soft, #a3b5ee) !important; }
 
     .vv-logo { width: 100%; height: auto; overflow: visible; }
   }
@@ -143,7 +143,7 @@
   &__label {
     margin: 0 0 1.25rem;
     color: var(--vv-cream, #f6f1ea);
-    font-family: var(--wp--preset--font-family--body, 'Manrope'), sans-serif;
+    font-family: var(--wp--preset--font-family--main-content, 'Montserrat', sans-serif);
     font-size: .75rem;
     font-weight: 600;
     letter-spacing: .3em;
