@@ -80,7 +80,7 @@ if ( !empty( $is_preview ) ) $classes[] = 'is-preview';
       <h3 class="vv-footer__label">Contacto</h3>
       <ul>
         <li><a href="tel:<?php print esc_attr( $tel ); ?>"><?php print esc_html( $info['phone'] ); ?></a></li>
-        <li><a href="mailto:<?php print esc_attr( $info['email'] ); ?>"><?php print esc_html( $info['email'] ); ?></a></li>
+        <li><a href="mailto:<?php print esc_attr( $info['email'] ); ?>"><?php print str_replace( '@', '@<wbr>', esc_html( $info['email'] ) ); ?></a></li>
       </ul>
       <a class="vv-footer__give" href="<?php print esc_url( $info['give_url'] ); ?>" target="_blank" rel="noopener">Dar en línea →</a>
     </div>
