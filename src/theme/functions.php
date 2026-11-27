@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || die( 'Direct file access is prohibited.' );
 
 if ( ! isset( $content_width ) ) $content_width = 1920;
 
-if ( !defined( 'VV_FONT_URL' ) ) define( 'VV_FONT_URL', 'https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Manrope:wght@400;500;600;700&display=swap' );
+if ( !defined( 'VV_FONT_URL' ) ) define( 'VV_FONT_URL', '' ); // Las fuentes van alojadas en el tema (assets/fonts).
 if ( !defined( 'VV_GMAPS_KEY' ) ) define( 'VV_GMAPS_KEY', '' );
 
 /**
@@ -81,6 +81,12 @@ function vv_social_icon( $network ) {
   if ( empty( $icons[ $network ] ) ) return '';
   return '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false">' . $icons[ $network ] . '</svg>';
 }
+
+add_action( 'wp_head', function() {
+  foreach ( [ 'archivo-latin-wdth-normal.woff2', 'manrope-latin-wght-normal.woff2' ] as $font ) {
+    printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n", esc_url( get_template_directory_uri() . '/assets/fonts/' . $font ) );
+  }
+}, 1 );
 
 class VerboTheme {
 
@@ -435,8 +441,8 @@ class VerboTheme {
 
   public static function enqueue_block_editor_assets() {
     
-    wp_enqueue_style( 'verbovancouver-fonts', VV_FONT_URL, [], null );
-    wp_enqueue_style( 'verbovancouver-fonts-local', get_theme_file_uri( 'assets/css/verbovancouver-fonts.css' ), [ 'verbovancouver-fonts' ], Verbo::theme_version() );
+    if ( VV_FONT_URL ) wp_enqueue_style( 'verbovancouver-fonts', VV_FONT_URL, [], null );
+    wp_enqueue_style( 'verbovancouver-fonts-local', get_theme_file_uri( 'assets/css/verbovancouver-fonts.css' ), [], Verbo::theme_version() );
     wp_enqueue_style( 'verbovancouver-base-style', get_theme_file_uri( 'assets/css/verbovancouver-editor.css' ), [ 'verbovancouver-fonts-local' ], Verbo::theme_version() );
   
     wp_enqueue_script( 'verbovancouver-block-editor', get_theme_file_uri( 'assets/js/verbovancouver-editor.js' ), [ 'wp-blocks', 'wp-dom', 'wp-edit-post', 'wp-editor' ], Verbo::theme_version());
@@ -487,8 +493,8 @@ class VerboTheme {
     wp_enqueue_script( 'select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', [ 'jquery' ], Verbo::theme_version(), true );
     wp_enqueue_script( 'verbovancouver', get_template_directory_uri() . '/assets/js/verbovancouver.js', [ 'jquery', 'verbovancouver-libs', 'verbovancouver-splittext' ], Verbo::theme_version(), true );
     
-    wp_enqueue_style( 'verbovancouver-fonts', VV_FONT_URL, [], null );
-    wp_enqueue_style( 'verbovancouver-fonts-local', get_template_directory_uri() . '/assets/css/verbovancouver-fonts.css', [ 'verbovancouver-fonts' ], Verbo::theme_version() );
+    if ( VV_FONT_URL ) wp_enqueue_style( 'verbovancouver-fonts', VV_FONT_URL, [], null );
+    wp_enqueue_style( 'verbovancouver-fonts-local', get_template_directory_uri() . '/assets/css/verbovancouver-fonts.css', [], Verbo::theme_version() );
     wp_enqueue_style( 'select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css', Verbo::theme_version() );
     wp_enqueue_style( 'verbovancouver', get_template_directory_uri() . '/assets/css/verbovancouver.css', [], Verbo::theme_version() );
   }

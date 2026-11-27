@@ -153,19 +153,55 @@
     }
   }
 
-  // En móvil la luz queda arriba y el texto respira abajo
+  // En móvil la cruz completa queda arriba y el texto debajo; al bajar, la luz sube
+  // y el resto del texto aparece (ver la secuencia en el JS).
   @media (max-width: 781px) {
-    .hero-luz__lights { align-items: flex-start; padding-top: 14vh; gap: 1.1rem; }
-    .hero-luz__bar { height: 38vh; opacity: .4; }
-    .hero-luz__bar:nth-child(odd) { height: 30vh; }
-    .hero-luz__bar--cross { height: 44vh; opacity: .9; }
-    .hero-luz__beam { top: 22vh; }
-    .hero-luz__content::before {
-      content: "";
-      position: absolute;
-      inset: -3rem -2rem -2rem;
-      z-index: -1;
-      background: linear-gradient(to top, var(--hl-night) 55%, transparent);
+    align-items: start;
+    height: 100svh;
+    min-height: 34rem;
+    padding: 0 clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
+
+    .hero-luz__lights {
+      inset: 5.25rem 0 auto;
+      height: 50svh;
+      align-items: flex-end;
+      gap: 1.1rem;
+      transform-origin: 50% 0;
+    }
+
+    .hero-luz__bar { height: 78%; opacity: .45; }
+    .hero-luz__bar:nth-child(odd) { height: 62%; }
+    .hero-luz__bar--cross { height: 100%; opacity: .95; }
+    .hero-luz__beam { top: 32%; width: 7.5rem; }
+
+    .hero-luz__content {
+      margin-top: calc(5.25rem + 50svh + 1.75rem);
+      text-align: center;
+    }
+
+    .hero-luz__eyebrow { font-size: .7rem; letter-spacing: .28em; line-height: 1.8; }
+    .hero-luz__heading { font-size: clamp(2.75rem, 13vw, 4rem); margin-top: .5em; }
+    .hero-luz__text { margin-inline: auto; font-size: 1.05rem; line-height: 1.55; }
+    .hero-luz__actions { justify-content: center; margin-top: 1.5rem; gap: .75rem; }
+    .hero-luz__btn { padding: .8rem 1.25rem; }
+
+    .hero-luz__scroll {
+      left: 50%;
+      right: auto;
+      bottom: 1.5rem;
+      transform: translateX(-50%);
+      writing-mode: horizontal-tb;
+
+      &::after { height: 2.25rem; margin-top: .5rem; }
+    }
+
+    // Sin la secuencia (sin JS o con movimiento reducido) el texto fluye normal
+    &:not(.is-sequenced) {
+      height: auto;
+      min-height: 100svh;
+      padding-bottom: 5rem;
+
+      .hero-luz__scroll { display: none; }
     }
   }
 

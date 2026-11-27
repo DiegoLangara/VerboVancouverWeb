@@ -504,8 +504,9 @@ for ( var i = 0; i < contentNodes.length; i++ ) {
  */
 ( function() {
 
+  // Con "reducir movimiento" activado en el teléfono, los elementos solo aparecen con un fundido, sin desplazarse.
   var reduce = window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
-  if ( reduce || !window.gsap || !window.ScrollTrigger ) return;
+  if ( !window.gsap || !window.ScrollTrigger ) return;
 
   document.documentElement.classList.add( 'vv-motion' );
 
@@ -522,7 +523,9 @@ for ( var i = 0; i < contentNodes.length; i++ ) {
 
       gsap.set( el, { opacity: 1 } );
 
-      if ( 'split' === type && window.SplitType ) {
+      if ( reduce ) {
+        gsap.from( el, { opacity: 0, duration: 0.8, ease: 'power1.out', scrollTrigger: trigger } );
+      } else if ( 'split' === type && window.SplitType ) {
         var split = new window.SplitType( el, { types: 'words' } );
         gsap.from( split.words, { yPercent: 110, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.06, scrollTrigger: trigger } );
       } else if ( 'mask' === type ) {
