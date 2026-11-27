@@ -504,7 +504,7 @@ class VerboTheme {
 
   public static function page_admin_body_class($classes) {
     global $post;
-    $classes .= ' page-id-'.$post->ID.' ';
+    if ( $post instanceof WP_Post ) $classes .= ' page-id-' . $post->ID . ' ';
 
     return $classes;
 }
