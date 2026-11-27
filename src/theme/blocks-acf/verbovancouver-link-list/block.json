@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "verbovancouver/link-list",
+  "title": "Link list",
+  "description": "A link list block.",
+  "style": "verbovancouver-link-list-css",
+  "script": "verbovancouver-link-list",
+  "category": "verbovancouver-blocks",
+  "icon": "",
+  "keywords": ["Link List"],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "verbovancouver-link-list.php",
+     "blockVersion": 3,
+    "autoInlineEditing": true,
+    "hideFieldsInSidebar": false
+  },
+  "styles": [],
+  "supports": {
+    "align": false,
+    "anchor": false,
+    "alignContent": false,
+    "color": {
+      "text": false,
+      "background": false,
+      "link": false
+    },
+    "alignText": false,
+    "fullHeight": false
+  },
+  "attributes": {}
+}

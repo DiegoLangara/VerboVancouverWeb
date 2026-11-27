@@ -1,0 +1,87 @@
+@import "functions";
+@import "../../assets/css/partials/vv-functions";
+
+@import "variables";
+@import "../../assets/css/partials/verbovancouver-variables";
+
+@import "mixins";
+@import "../../assets/css/partials/vv-mixins";
+
+.wp-block-vv-predica {
+  padding-block: var(--section-padding);
+  color: var(--vv-cream, #f6f1ea);
+  background:
+    radial-gradient(70% 60% at 85% 10%, rgb(108 75 216 / .28), transparent 70%),
+    var(--vv-night, #0e0b0a);
+
+  .predica__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .predica__facade {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    padding: 0;
+    border: 0;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    cursor: pointer;
+    background: #000;
+    color: inherit;
+
+    img { width: 100%; height: 100%; object-fit: cover; opacity: .75; transition: opacity .4s, transform 1.2s var(--vv-ease, ease); }
+    &:hover img { opacity: .9; transform: scale(1.03); }
+
+    iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  }
+
+  .predica__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: clamp(4.5rem, 8vw, 7rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--vv-amber, #f2a65a);
+    box-shadow: 0 0 0 0 rgb(242 166 90 / .6);
+    animation: vv-pulse 2.4s infinite;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 54%;
+      transform: translate(-50%, -50%);
+      border-style: solid;
+      border-width: .9rem 0 .9rem 1.5rem;
+      border-color: transparent transparent transparent var(--vv-night, #0e0b0a);
+    }
+  }
+
+  .predica__meta {
+    position: absolute;
+    left: 1.5rem;
+    bottom: 1.25rem;
+    font-size: .9rem;
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-shadow: 0 1px 8px rgb(0 0 0 / .6);
+  }
+
+  @keyframes vv-pulse {
+    70% { box-shadow: 0 0 0 1.5rem rgb(242 166 90 / 0); }
+    100% { box-shadow: 0 0 0 0 rgb(242 166 90 / 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .predica__play { animation: none; }
+  }
+}

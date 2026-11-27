@@ -1,0 +1,49 @@
+@import "functions";
+@import "../../assets/css/partials/vv-functions";
+
+@import "variables";
+@import "../../assets/css/partials/verbovancouver-variables";
+
+@import "mixins";
+@import "../../assets/css/partials/vv-mixins";
+
+
+.wp-block-vv-svg {
+a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-decoration: none;
+    
+}
+svg{
+   
+     width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: top center;
+      border-radius: 0px;
+	  transition: all $transition-fast ease-in-out;
+    
+}
+
+
+    // Editor styles
+    [class$="skeleton__content"] .editor-styles-wrapper & {
+        
+    }
+
+}
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+}

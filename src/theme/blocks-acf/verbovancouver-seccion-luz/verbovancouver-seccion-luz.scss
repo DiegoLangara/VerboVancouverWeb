@@ -1,0 +1,190 @@
+@import "functions";
+@import "../../assets/css/partials/vv-functions";
+
+@import "variables";
+@import "../../assets/css/partials/verbovancouver-variables";
+
+@import "mixins";
+@import "../../assets/css/partials/vv-mixins";
+
+
+.wp-block-vv-seccion-luz {
+  padding-block: clamp(5rem, 10vw, 8rem);
+  color: var(--vv-cream, #f6f1ea);
+  background: var(--vv-night, #0e0b0a);
+
+  & + & { padding-top: 0; }
+
+  &.is-alt { background: var(--vv-night-2, #1a1412); }
+  &.is-alt + & { padding-top: clamp(5rem, 10vw, 8rem); }
+
+  .seccion-luz__inner {
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 5rem);
+
+    @media (min-width: 1024px) {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      align-items: start;
+    }
+  }
+
+  .seccion-luz__head {
+    @media (min-width: 1024px) { position: sticky; top: 7.5rem; }
+
+    .vv-title { font-size: clamp(2.4rem, 1.4rem + 3.8vw, 4.75rem); }
+  }
+
+  .seccion-luz__intro {
+    max-width: 30rem;
+    margin: 1.5rem 0 0;
+    color: var(--vv-muted, rgb(246 241 234 / .7));
+    font-size: 1.1rem;
+    line-height: 1.65;
+  }
+
+  .seccion-luz__items { margin: 0; padding: 0; list-style: none; }
+
+  .seccion-luz__item { scroll-margin-top: 7rem; }
+
+  .seccion-luz__card {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.5rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .seccion-luz__num {
+    color: var(--vv-amber, #f2a65a);
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    padding-top: .55rem;
+  }
+
+  .seccion-luz__body { display: grid; gap: .6rem; }
+
+  // Con logo: el nombre va arriba en ámbar (mismo estilo que el número), luego el logo y el texto.
+  .seccion-luz__card.has-logo {
+    grid-template-columns: 1fr auto;
+
+    .seccion-luz__label {
+      grid-column: 1 / -1;
+      padding-top: 0;
+      text-transform: uppercase;
+    }
+
+    .seccion-luz__body { grid-column: 1; gap: .9rem; }
+    .seccion-luz__arrow { grid-column: 2; grid-row: 2; }
+  }
+
+  .seccion-luz__logo {
+    display: block;
+
+    img {
+      display: block;
+      width: auto;
+      height: clamp(2.25rem, 1.8rem + 1.5vw, 3.25rem);
+      max-width: min(100%, 17rem);
+      object-fit: contain;
+      object-position: left center;
+    }
+  }
+
+  a.seccion-luz__card.has-logo:hover .seccion-luz__logo img { opacity: .85; }
+
+  .seccion-luz__title {
+    font-family: var(--wp--preset--font-family--heading, 'Archivo'), sans-serif;
+    font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.25rem);
+    font-stretch: 75%;
+    font-variation-settings: 'wdth' 75;
+    font-weight: 700;
+    line-height: 1.05;
+    text-transform: uppercase;
+  }
+
+  .seccion-luz__text {
+    color: var(--vv-muted, rgb(246 241 234 / .7));
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+
+  .seccion-luz__meta {
+    color: var(--vv-blue-soft, #a3b5ee);
+    font-size: .85rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+  }
+
+  .seccion-luz__arrow {
+    align-self: center;
+    font-size: 1.5rem;
+    color: var(--vv-amber, #f2a65a);
+    transition: transform .4s var(--vv-ease, ease);
+  }
+
+  a.seccion-luz__card:hover {
+    .seccion-luz__title { color: var(--vv-amber, #f2a65a); }
+    .seccion-luz__arrow { transform: translateX(.35rem); }
+  }
+
+  // Lista numerada con una línea de luz que conecta los puntos
+  &.is-numbered {
+    .seccion-luz__item {
+      position: relative;
+      padding: 2rem 0 2rem 0;
+      border-top: 1px solid var(--vv-line, rgb(246 241 234 / .14));
+
+      &:last-child { border-bottom: 1px solid var(--vv-line, rgb(246 241 234 / .14)); }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, var(--vv-amber, #f2a65a), transparent 60%);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 1s var(--vv-ease, ease);
+      }
+
+      &:hover::before { transform: scaleX(1); }
+    }
+  }
+
+  // Tarjetas
+  &.is-cards {
+    .seccion-luz__items {
+      display: grid;
+      gap: 1rem;
+
+      @media (min-width: 640px) { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .seccion-luz__card {
+      height: 100%;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto 1fr;
+      align-content: start;
+      gap: 1rem;
+      padding: 1.75rem;
+      border: 1px solid var(--vv-line, rgb(246 241 234 / .14));
+      border-radius: 1.25rem;
+      background: linear-gradient(160deg, rgb(246 241 234 / .04), transparent 60%);
+      transition: border-color .35s, background-color .35s, transform .5s var(--vv-ease, ease);
+
+      &:hover {
+        border-color: rgb(242 166 90 / .5);
+        transform: translateY(-3px);
+      }
+    }
+
+    .seccion-luz__num { grid-column: 1; grid-row: 1; padding-top: 0; }
+    .seccion-luz__arrow { grid-column: 2; grid-row: 1; align-self: start; font-size: 1.25rem; }
+    .seccion-luz__body { grid-column: 1 / -1; grid-row: 2; }
+    .seccion-luz__title { font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem); }
+  }
+}

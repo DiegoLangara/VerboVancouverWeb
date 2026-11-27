@@ -1,0 +1,248 @@
+@import "functions";
+@import "../../assets/css/partials/vv-functions";
+
+@import "variables";
+@import "../../assets/css/partials/verbovancouver-variables";
+
+@import "mixins";
+@import "../../assets/css/partials/vv-mixins";
+
+
+.wp-block-vv-hero-luz {
+  --hl-night: var(--wp--preset--color--noche, #0e0b0a);
+  --hl-cream: var(--wp--preset--color--crema, #f6f1ea);
+  --hl-amber: var(--wp--preset--color--ambar, #f2a65a);
+  --hl-sunset: var(--wp--preset--color--atardecer, #d9483b);
+  --hl-violet: var(--wp--preset--color--violeta, #6c4bd8);
+  --hl-blue: var(--wp--preset--color--azul-verbo, #2a479d);
+  --hl-blue-soft: var(--wp--preset--color--azul-claro, #a3b5ee);
+
+  position: relative;
+  display: grid;
+  align-items: end;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: 8rem clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem) 6rem;
+  color: var(--hl-cream);
+  background:
+    radial-gradient(120% 80% at 50% 100%, rgb(42 71 157 / .55), transparent 60%),
+    radial-gradient(80% 60% at 50% 110%, rgb(217 72 59 / .35), transparent 70%),
+    var(--hl-night);
+
+  .hero-luz__lights {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1.2rem, 4vw, 3.5rem);
+
+    // En escritorio la luz y la cruz se ubican a la derecha y el texto respira a la izquierda
+    @media (min-width: 782px) {
+      left: 40%;
+      gap: clamp(1rem, 2.6vw, 2.75rem);
+    }
+  }
+
+  .hero-luz__bar {
+    width: 3px;
+    height: 62vh;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, transparent, var(--hl-cream) 20%, var(--hl-amber) 80%, transparent);
+    box-shadow: 0 0 18px rgb(242 166 90 / .6), 0 0 60px rgb(242 166 90 / .25);
+    opacity: .55;
+    transform-origin: 50% 100%;
+
+    &:nth-child(odd) { height: 48vh; }
+
+  }
+
+  // La cruz es una pieza aparte, encima de las barras animadas, con proporción de cruz latina:
+  // el travesaño mide un 60 % del alto y cruza a un tercio desde arriba.
+  .hero-luz__cross {
+    --cross-h: clamp(13rem, 34vh, 22rem);
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--cross-h) * .6);
+    height: var(--cross-h);
+    transform: translate(-50%, -58%);
+    pointer-events: none;
+
+    // En escritorio la cruz se corre a la derecha para no cruzarse con el título
+
+  }
+
+  .hero-luz__post,
+  .hero-luz__beam {
+    position: absolute;
+    border-radius: 4px;
+    background: var(--hl-cream);
+    box-shadow: 0 0 18px rgb(246 241 234 / .75), 0 0 60px rgb(242 166 90 / .35);
+  }
+
+  .hero-luz__post {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    margin-left: -2px;
+    transform-origin: 50% 0;
+  }
+
+  .hero-luz__beam {
+    top: 30%;
+    left: 0;
+    right: 0;
+    height: 4px;
+    margin-top: -2px;
+  }
+
+  .hero-luz__content {
+    position: relative;
+    max-width: 46rem;
+  }
+
+  .hero-luz__eyebrow {
+    margin: 0;
+    font-size: .75rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--hl-blue-soft);
+  }
+
+  .hero-luz__heading {
+    margin: .25em 0;
+    font-size: clamp(3rem, 1.6rem + 5vw, 6.25rem);
+    font-weight: 600;
+    line-height: .95;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    color: var(--hl-cream);
+  }
+
+  .hero-luz__text {
+    max-width: 32rem;
+    font-size: 1.2rem;
+    color: rgb(246 241 234 / .72);
+  }
+
+  .hero-luz__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .hero-luz__btn {
+    display: inline-flex;
+    align-items: center;
+    padding: .85rem 1.4rem;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+
+    &--primary {
+      background: var(--hl-blue);
+      color: var(--hl-cream);
+
+      &:hover, &:focus-visible { background: var(--hl-cream); color: var(--hl-night); }
+    }
+
+    &--secondary {
+      border: 1px solid rgb(246 241 234 / .4);
+      color: var(--hl-cream);
+
+      &:hover, &:focus-visible { border-color: var(--hl-amber); color: var(--hl-amber); }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--hl-blue-soft);
+      outline-offset: 3px;
+    }
+  }
+
+  .hero-luz__heading { font-family: $font-family-heading; font-stretch: 75%; font-weight: 700; text-transform: uppercase; }
+
+  .hero-luz__scroll {
+    position: absolute;
+    right: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
+    bottom: 2rem;
+    writing-mode: vertical-rl;
+    font-size: .7rem;
+    letter-spacing: .4em;
+    text-transform: uppercase;
+    color: rgb(246 241 234 / .55);
+
+    &::after {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 3.5rem;
+      margin: .75rem auto 0;
+      background: linear-gradient(to bottom, var(--hl-amber), transparent);
+    }
+  }
+
+  // En móvil la cruz completa queda arriba y el texto debajo; al bajar, la luz sube
+  // y el resto del texto aparece (ver la secuencia en el JS).
+  @media (max-width: 781px) {
+    align-items: start;
+    height: 100svh;
+    min-height: 34rem;
+    padding: 0 clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
+
+    .hero-luz__lights {
+      inset: 5.25rem 0 auto;
+      height: 50svh;
+      align-items: flex-end;
+      gap: 1.1rem;
+      transform-origin: 50% 0;
+    }
+
+    .hero-luz__bar { height: 78%; opacity: .45; }
+    .hero-luz__bar:nth-child(odd) { height: 62%; }
+    .hero-luz__cross { --cross-h: 30svh; top: 50%; transform: translate(-50%, -52%); }
+
+    .hero-luz__content {
+      margin-top: calc(5.25rem + 50svh + 1.75rem);
+      text-align: center;
+    }
+
+    .hero-luz__eyebrow { font-size: .7rem; letter-spacing: .28em; line-height: 1.8; }
+    .hero-luz__heading { font-size: clamp(2.75rem, 13vw, 4rem); margin-top: .5em; }
+    .hero-luz__text { margin-inline: auto; font-size: 1.05rem; line-height: 1.55; }
+    .hero-luz__actions { justify-content: center; margin-top: 1.5rem; gap: .75rem; }
+    .hero-luz__btn { padding: .8rem 1.25rem; }
+
+    .hero-luz__scroll {
+      left: 50%;
+      right: auto;
+      bottom: 1.5rem;
+      transform: translateX(-50%);
+      writing-mode: horizontal-tb;
+
+      &::after { height: 2.25rem; margin-top: .5rem; }
+    }
+
+    // Sin la secuencia (sin JS o con movimiento reducido) el texto fluye normal
+    &:not(.is-sequenced) {
+      height: auto;
+      min-height: 100svh;
+      padding-bottom: 5rem;
+
+      .hero-luz__scroll { display: none; }
+    }
+  }
+
+  // Editor styles
+  &.is-preview {
+    min-height: 600px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 1ms !important; }
+  }
+}

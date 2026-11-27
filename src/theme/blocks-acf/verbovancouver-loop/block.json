@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "verbovancouver/loop",
+  "title": "Post loop",
+  "description": "A loop block.",
+  "style": "verbovancouver-loop-css",
+  "script": "verbovancouver-loop",
+  "category": "verbovancouver-blocks",
+  "icon": "",
+  "keywords": ["Loop"],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "verbovancouver-loop.php",
+     "blockVersion": 3,
+    "autoInlineEditing": true,
+    "hideFieldsInSidebar": false
+  },
+  "styles": [],
+  "supports": {
+    "align": false,
+    "anchor": false,
+    "alignContent": false,
+    "color": {
+      "text": false,
+      "background": false,
+      "link": false
+    },
+    "alignText": false,
+    "fullHeight": false
+  },
+  "attributes": {}
+}

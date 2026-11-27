@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "verbovancouver/accordion",
+  "title": "Accordion",
+  "description": "A accordion block.",
+  "style": "verbovancouver-accordion-css",
+  "script": "verbovancouver-accordion",
+  "category": "verbovancouver-blocks",
+  "icon": "",
+  "keywords": ["accordion"],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "verbovancouver-accordion.php",
+     "blockVersion": 3,
+    "autoInlineEditing": true,
+    "hideFieldsInSidebar": false
+  },
+  "styles": [],
+  "supports": {
+    "align": false,
+    "anchor": false,
+    "alignContent": false,
+    "color": {
+      "text": false,
+      "background": false,
+      "link": false
+    },
+    "alignText": false,
+    "fullHeight": false
+  },
+  "attributes": {}
+}

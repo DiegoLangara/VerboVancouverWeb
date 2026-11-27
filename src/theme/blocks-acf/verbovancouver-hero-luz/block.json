@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "verbovancouver/hero-luz",
+  "title": "Hero Luz que habita",
+  "description": "Hero de inicio con barras de luz y cruz animadas.",
+  "style": "verbovancouver-hero-luz-css",
+  "script": "verbovancouver-hero-luz",
+  "category": "verbovancouver-blocks",
+  "icon": "lightbulb",
+  "keywords": ["hero", "luz", "inicio"],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "verbovancouver-hero-luz.php",
+    "blockVersion": 3,
+    "autoInlineEditing": true,
+    "hideFieldsInSidebar": false
+  },
+  "styles": [],
+  "supports": {
+    "align": ["full"],
+    "anchor": true,
+    "alignContent": false,
+    "color": {
+      "text": false,
+      "background": false,
+      "link": false
+    },
+    "alignText": false,
+    "fullHeight": false
+  },
+  "attributes": {
+    "align": { "type": "string", "default": "full" }
+  }
+}

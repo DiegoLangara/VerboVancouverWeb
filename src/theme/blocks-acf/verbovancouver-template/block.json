@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "verbovancouver/template",
+  "title": "Template",
+  "description": "A template block.",
+  "style": "verbovancouver-template-css",
+  "script": "verbovancouver-template",
+  "category": "verbovancouver-blocks",
+  "icon": "",
+  "keywords": ["template"],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "verbovancouver-template.php",
+     "blockVersion": 3,
+    "autoInlineEditing": true,
+    "hideFieldsInSidebar": false
+  },
+  "styles": [],
+  "supports": {
+    "align": false,
+    "anchor": false,
+    "alignContent": false,
+    "color": {
+      "text": false,
+      "background": false,
+      "link": false
+    },
+    "alignText": false,
+    "fullHeight": false
+  },
+  "attributes": {}
+}

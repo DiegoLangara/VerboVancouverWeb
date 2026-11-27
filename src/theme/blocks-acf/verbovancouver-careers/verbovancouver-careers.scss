@@ -1,0 +1,19 @@
+@import "functions";
+@import "../../assets/css/partials/vv-functions";
+
+@import "variables";
+@import "../../assets/css/partials/verbovancouver-variables";
+
+@import "mixins";
+@import "../../assets/css/partials/vv-mixins";
+
+.career {
+  &__item {
+    &__date {
+      @include media-breakpoint-up($breakpoint-tablet) {
+        display: flex;
+        gap: var(--wp--peset--style--gap, 1em);
+      }
+    }
+  }
+}

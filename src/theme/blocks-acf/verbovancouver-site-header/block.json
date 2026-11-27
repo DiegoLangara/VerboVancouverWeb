@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "verbovancouver/site-header",
+  "title": "Cabecera del sitio",
+  "description": "Logo, menú principal, botón de visita y menú móvil.",
+  "style": "verbovancouver-site-header-css",
+  "script": "verbovancouver-site-header",
+  "category": "verbovancouver-blocks",
+  "icon": "menu",
+  "keywords": [
+    "header",
+    "menu"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "verbovancouver-site-header.php",
+    "blockVersion": 3,
+    "autoInlineEditing": true,
+    "hideFieldsInSidebar": false
+  },
+  "styles": [],
+  "supports": {
+    "align": false,
+    "anchor": false,
+    "alignContent": false,
+    "color": {
+      "text": false,
+      "background": false,
+      "link": false
+    },
+    "alignText": false,
+    "fullHeight": false,
+    "multiple": false
+  },
+  "attributes": {}
+}

@@ -1,0 +1,21 @@
+@import "functions";
+@import "../../assets/css/partials/vv-functions";
+
+@import "variables";
+@import "../../assets/css/partials/verbovancouver-variables";
+
+@import "mixins";
+@import "../../assets/css/partials/vv-mixins";
+
+
+.wp-block-vv-template {
+
+
+
+
+    // Editor styles
+    [class$="skeleton__content"] .editor-styles-wrapper & {
+        
+    }
+
+}

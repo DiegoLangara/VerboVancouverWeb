@@ -1,0 +1,243 @@
+// Set Colours
+$white: #fff;
+$black: #000;
+$red: var(--wp--preset--color--red);
+
+$colors: ( 
+  "white": $white, 
+  "black" : $black,
+  "red" : $red,
+  );
+
+@function color($color) {
+  @each $name, $hex in $colors {
+    @if $color == $name {
+      @return $hex;
+    }
+  }
+}
+
+// Apply colours
+
+$heading-color: #f6f1ea;
+$body-color: #f6f1ea;
+$body-bg: #0e0b0a;
+
+$link-color: #f6f1ea;
+$link-hover-color: #f2a65a;
+
+// Todo: set form colours and button colours
+
+
+// Breakpoints
+$breakpoints-twbs: (
+  xs: 0,
+  lg: 992px,
+  xl: 1200px
+);
+
+$breakpoints: (
+  xs: 0,
+  iphone: 375px,
+  iphoneplus: 414px,
+  mobile: 480px,
+  sm: 576px,
+  small: 600px,
+  md: 768px,
+  medium: 782px,
+  large: 960px,
+  lg: 992px,
+  tablet: 1024px,
+  portrait: 1080px,
+  xl: 1200px,
+  wide: 1280px,
+  ipadpro: 1366px,
+  huge: 1440px,
+  xxl: 1600px
+);
+
+$breakpoint-mobile: medium;
+$breakpoint-tablet: large;
+$breakpoint-desktop: xl;
+
+$breakpoint-main: $breakpoint-tablet;
+$breakpoint-nav: $breakpoint-tablet;
+
+$grid-breakpoints: $breakpoints;
+
+// Fonts
+
+$font-path: '../fonts';
+$fa-font-path: $font-path;
+
+$font-family-body: var(--wp--preset--font-family--main-content, sans-serif);
+$font-weight-body-regular: 400;
+$font-weight-body: $font-weight-body-regular;
+
+$font-family-heading: var(--wp--preset--font-family--heading, sans-serif);
+$font-weight-heading-regular: 400;
+$font-weight-heading-bold: 700;
+$font-weight-heading: $font-weight-heading-bold;
+
+$font-size-h1: var(--wp--preset--font-size--h-1, 60px);
+$font-size-h2: var(--wp--preset--font-size--h-2, 48px);
+$font-size-h3: var(--wp--preset--font-size--h-3, 40px);
+$font-size-h4: var(--wp--preset--font-size--h-4, 32px);
+$font-size-h5: var(--wp--preset--font-size--h-5, 24px);
+$font-size-p: var(--wp--preset--font-size--p, 18px);
+
+// Transitions
+
+$transition-fast: 275ms;
+$transition-medium: 400ms;
+$transition-slow: 650ms;
+
+// Additional vars
+
+$border-radius: 0;
+$border-radius-md: 0;
+$border-radius-sm: 0;
+
+$header-height: rem-calc( 120 );
+$header-height-desktop: rem-calc( 160 );
+
+$content-width: 100%;
+
+$outer-padding: var(--outer--padding);
+$section-padding: var(--section-padding);
+
+// Images
+
+//$svg: btoa( '' );
+// url( 'data:image/svg+xml;base64,#{$svg}' );
+
+//$png: '';
+// url("data:image/png;base64,${$png}");
+
+/**
+ * Formidable Forms
+ */
+//fonts
+$frm_font_1: $font-family-body;
+
+//css vars
+$frm_var_form-width: 100%;
+$frm_var_form-align: left;
+$frm_var_direction: ltr;
+$frm_var_fieldset: 0px;
+$frm_var_fieldset-color: $black;
+$frm_var_fieldset-padding: 0 0 15px 0;
+$frm_var_fieldset-bg-color: transparent;
+$frm_var_title-size: 40px;
+$frm_var_title-color: $body-color;
+$frm_var_title-margin-top: 10px;
+$frm_var_title-margin-bottom: 60px;
+$frm_var_form-desc-size: 16px;
+$frm_var_form-desc-color: $body-color;
+$frm_var_form-desc-margin-top: 10px;
+$frm_var_form-desc-margin-bottom: 25px;
+$frm_var_font: $frm_font_1;
+$frm_var_font-size: 16px;
+$frm_var_weight: $font-weight-body;
+$frm_var_position: none;
+$frm_var_align: left;
+$frm_var_width: 150px;
+$frm_var_dz-border-color: $black;
+$frm_var_required-color: $black;
+$frm_var_required-weight: $font-weight-body;
+$frm_var_label-padding: 0 0 7px 0;
+$frm_var_label-color: $black;
+$frm_var_label-font: $font-family-body;
+$frm_var_label-weight: $font-weight-body;
+$frm_var_description-font-size: 17px;
+$frm_var_description-color: $body-color;
+$frm_var_description-weight: normal;
+$frm_var_description-style: normal;
+$frm_var_description-align: left;
+$frm_var_description-margin: 0;
+$frm_var_field-font-size: 18px;
+$frm_var_field-height: 60px;
+$frm_var_line-height: 60px;
+$frm_var_field-width: 100%;
+$frm_var_auto-width: 100%;
+$frm_var_field-pad: 10px 15px;
+$frm_var_field-margin: 20px;
+$frm_var_field-weight: $font-weight-body;
+$frm_var_text-color: $black;
+$frm_var_border-color: $black;
+$frm_var_field-border-width: 1px;
+$frm_var_field-border-style: solid;
+$frm_var_bg-color: $white;
+$frm_var_bg-color-active: $white;
+$frm_var_border-color-active: $black;
+$frm_var_text-color-error: $black;
+$frm_var_bg-color-error: $white;
+$frm_var_border-color-error: $black;
+$frm_var_border-width-error: 1px;
+$frm_var_border-style-error: solid;
+$frm_var_bg-color-disabled: $black;
+$frm_var_border-color-disabled: $black;
+$frm_var_text-color-disabled: $black;
+$frm_var_radio-align: block;
+$frm_var_check-align: block;
+$frm_var_check-font-size: 13px;
+$frm_var_check-label-color: $body-color;
+$frm_var_check-weight: normal;
+$frm_var_section-font-size: 26px;
+$frm_var_section-color: $body-color;
+$frm_var_section-weight: $font-weight-heading;
+$frm_var_section-pad: 0 0 7p 0;
+$frm_var_section-mar-top: 0;
+$frm_var_section-mar-bottom: 0;
+$frm_var_section-bg-color: transparent;
+$frm_var_section-border-color: transparent;
+$frm_var_section-border-width: none;
+$frm_var_section-border-style: solid;
+$frm_var_section-border-loc: -top;
+$frm_var_collapse-pos: after;
+$frm_var_submit-font-size: 15px;
+$frm_var_submit-width: auto;
+$frm_var_submit-height: auto;
+$frm_var_submit-bg-color: $black;
+$frm_var_submit-border-color: $black;
+$frm_var_submit-border-width: 1px;
+$frm_var_submit-text-color: $white;
+$frm_var_submit-weight: normal;
+$frm_var_submit-border-radius: $border-radius;
+$frm_var_submit-margin: 10px;
+$frm_var_submit-padding: 10px 20px;
+$frm_var_submit-shadow-color: transparent;
+$frm_var_submit-hover-bg-color: $black;
+$frm_var_submit-hover-color: $white;
+$frm_var_submit-hover-border-color: $black;
+$frm_var_submit-active-bg-color: $black;
+$frm_var_submit-active-color: $white;
+$frm_var_submit-active-border-color: $black;
+$frm_var_border-radius: $border-radius;
+$frm_var_error-bg: $black;
+$frm_var_error-border: $black;
+$frm_var_error-text: $white;
+$frm_var_error-font-size: 16px;
+$frm_var_success-bg-color: $black;
+$frm_var_success-border-color: $black;
+$frm_var_success-text-color: $black;
+$frm_var_success-font-size: 16px;
+$frm_var_progress-bg-color: $black;
+$frm_var_progress-active-color: $white;
+$frm_var_progress-active-bg-color: $black;
+$frm_var_progress-color: $body-color;
+$frm_var_progress-border-color: $black;
+$frm_var_progress-border-color-b: $black;
+$frm_var_progress-border-size: 1px;
+$frm_var_progress-size: 30px;
+$frm_var_toggle-font-size: 15px;
+$frm_var_toggle-on-color: $black;
+$frm_var_toggle-off-color: $black;
+$frm_var_slider-font-size: 24px;
+$frm_var_slider-color: $white;
+$frm_var_slider-bar-color: $black;
+$frm_var_date-head-bg-color: $black;
+$frm_var_date-head-color: $white;
+$frm_var_date-band-color: $black;
+$frm_var_box-shadow: none;
+$frm_var_image-size: 150px;
