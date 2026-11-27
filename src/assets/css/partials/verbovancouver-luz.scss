@@ -31,41 +31,27 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
-// Cabecera fija y transparente sobre el hero
+// Cabecera: el envoltorio de la parte de plantilla queda fijo; el diseño vive en el bloque verbovancouver/site-header
 body > header.site-header {
   position: fixed;
   inset: 0 0 auto;
   z-index: 100;
-  transition: background-color .4s var(--vv-ease), backdrop-filter .4s;
+  min-height: 0;
+  background: none;
 
-  .header-group { padding: 1.25rem var(--outer--padding); }
-  .header-inner { align-items: center; gap: 2rem; }
-  .main-logo img { filter: brightness(0) invert(1); max-height: 56px; width: auto; }
+  > * { max-width: none; margin: 0; }
 
-  .wp-block-navigation {
-    color: var(--vv-cream);
-    font-weight: 500;
-    gap: 1.75rem;
-
-    a { text-decoration: none; opacity: .8; transition: opacity .2s, color .2s; }
-    a:hover { opacity: 1; color: var(--vv-amber); }
-  }
-
-  .is-scrolling & {
-    background-color: rgb(14 11 10 / .78);
-    backdrop-filter: blur(14px);
-  }
+  html.vv-menu-open & { transform: none !important; }
 }
 
-// Pie
-body > footer.site-footer {
-  border-top: 1px solid var(--vv-line);
-  color: var(--vv-muted);
-  font-size: .95rem;
+html.vv-menu-open { overflow: hidden; }
 
-  .footer-group { padding: 3rem var(--outer--padding); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
-  a { color: inherit; }
-  a:hover { color: var(--vv-amber); }
+// Pie: el diseño vive en el bloque verbovancouver/site-footer
+body > footer.site-footer {
+  display: block;
+  margin-top: 0;
+
+  > * { max-width: none; margin: 0; }
 }
 
 // Piezas compartidas por los bloques

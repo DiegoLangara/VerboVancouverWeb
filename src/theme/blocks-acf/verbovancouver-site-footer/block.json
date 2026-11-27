@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "verbovancouver/site-footer",
+  "title": "Pie del sitio",
+  "description": "Cierre con invitación, datos de visita, enlaces, redes y donaciones.",
+  "style": "verbovancouver-site-footer-css",
+  "script": "verbovancouver-site-footer",
+  "category": "verbovancouver-blocks",
+  "icon": "editor-insertmore",
+  "keywords": [
+    "footer",
+    "pie"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "verbovancouver-site-footer.php",
+    "blockVersion": 3,
+    "autoInlineEditing": true,
+    "hideFieldsInSidebar": false
+  },
+  "styles": [],
+  "supports": {
+    "align": false,
+    "anchor": false,
+    "alignContent": false,
+    "color": {
+      "text": false,
+      "background": false,
+      "link": false
+    },
+    "alignText": false,
+    "fullHeight": false,
+    "multiple": false
+  },
+  "attributes": {}
+}

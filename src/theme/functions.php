@@ -14,6 +14,66 @@ function vv_theme_image( $file ) {
   return get_template_directory_uri() . '/assets/images/' . ltrim( $file, '/' );
 }
 
+/**
+ * Logo de Verbo Vancouver en SVG en línea (usa currentColor para adaptarse al fondo).
+ */
+function vv_logo_svg( $class = 'vv-logo' ) {
+  static $svg = null;
+  if ( null === $svg ) {
+    $file = get_template_directory() . '/assets/images/verbo-vancouver-logo.svg';
+    $svg  = file_exists( $file ) ? file_get_contents( $file ) : '';
+  }
+  if ( ! $svg ) return '<span class="' . esc_attr( $class ) . '">Verbo Vancouver</span>';
+  return preg_replace( '/^<svg /', '<svg class="' . esc_attr( $class ) . '" focusable="false" ', trim( $svg ), 1 );
+}
+
+/**
+ * Solo la palabra VERBO del logo (sin "Vancouver"), para el gran sello del pie.
+ */
+function vv_wordmark_svg( $class = 'vv-wordmark' ) {
+  $svg = vv_logo_svg( $class );
+  $svg = preg_replace( '#<text.*?</text>#s', '', $svg );
+  $svg = str_replace( ' role="img" aria-label="Verbo Vancouver"', '', $svg );
+  $svg = str_replace(
+    '<g fill="currentColor">',
+    '<defs><linearGradient id="vv-seal-gradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6F1EA" stop-opacity=".2"/><stop offset=".75" stop-color="#F6F1EA" stop-opacity="0"/></linearGradient></defs><g fill="url(#vv-seal-gradient)" stroke="rgba(246,241,234,.3)" stroke-width=".5">',
+    $svg
+  );
+  return str_replace( 'viewBox="178 748 438 156"', 'viewBox="180 750 434 100" preserveAspectRatio="xMidYMax meet" aria-hidden="true"', $svg );
+}
+
+/**
+ * Datos de contacto de la iglesia, compartidos por header, footer y bloques.
+ */
+function vv_church_info() {
+  return apply_filters( 'vv_church_info', array(
+    'service'   => 'Sábados · 6:00 pm',
+    'address'   => '7200 Cariboo Rd, Burnaby, BC',
+    'map_url'   => 'https://maps.google.com/?q=7200+Cariboo+Rd+Burnaby+BC',
+    'phone'     => '(604) 561-2293',
+    'email'     => 'info@verbovancouver.ca',
+    'give_url'  => 'https://tithe.ly/give?c=1647510',
+    'social'    => array(
+      'youtube'   => 'https://www.youtube.com/channel/UC_vqNqKT2nOjLyubHzqe7Kg',
+      'instagram' => 'https://www.instagram.com/verbovancouver',
+      'facebook'  => 'https://www.facebook.com/verbo.vancouver',
+    ),
+  ) );
+}
+
+/**
+ * Íconos sociales en SVG.
+ */
+function vv_social_icon( $network ) {
+  $icons = array(
+    'youtube'   => '<path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.6.5-3.2.5-4.8s-.1-3.2-.5-4.8ZM9.7 15V9l5.8 3-5.8 3Z"/>',
+    'instagram' => '<path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4ZM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z"/><path d="M12 2.2c-2.7 0-3 0-4 .1-3.6.2-5.5 2-5.7 5.7-.1 1-.1 1.3-.1 4s0 3 .1 4c.2 3.6 2 5.5 5.7 5.7 1 .1 1.3.1 4 .1s3 0 4-.1c3.6-.2 5.5-2 5.7-5.7.1-1 .1-1.3.1-4s0-3-.1-4c-.2-3.6-2-5.5-5.7-5.7-1-.1-1.3-.1-4-.1Zm0 1.8c2.6 0 2.9 0 4 .1 2.6.1 3.8 1.4 3.9 3.9.1 1 .1 1.3.1 4s0 2.9-.1 4c-.1 2.5-1.3 3.8-3.9 3.9-1 .1-1.4.1-4 .1s-3 0-4-.1c-2.6-.1-3.8-1.4-3.9-3.9-.1-1-.1-1.4-.1-4s0-2.9.1-4C4.2 5.5 5.4 4.2 8 4.1c1 0 1.4-.1 4-.1Z"/>',
+    'facebook'  => '<path d="M13.4 21.9v-8h2.7l.4-3.1h-3.1V8.8c0-.9.3-1.5 1.6-1.5h1.6V4.5c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.3H7.5v3.1h2.7v8h3.2Z"/>',
+  );
+  if ( empty( $icons[ $network ] ) ) return '';
+  return '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false">' . $icons[ $network ] . '</svg>';
+}
+
 class VerboTheme {
 
   public static function run() {
@@ -291,7 +351,7 @@ class VerboTheme {
 
 
   // Additional custom blocks
-  $custom_blocks = array('accordion', 'hero-luz', 'pilares', 'visita', 'predica', 'comunidad', 'pasos');
+  $custom_blocks = array('accordion', 'hero-luz', 'pilares', 'visita', 'predica', 'comunidad', 'pasos', 'site-header', 'site-footer');
 
   foreach ($custom_blocks as $block) {
     // Register the block
