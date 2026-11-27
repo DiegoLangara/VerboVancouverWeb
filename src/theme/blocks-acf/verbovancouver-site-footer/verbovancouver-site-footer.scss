@@ -138,7 +138,6 @@
     &:hover { color: var(--vv-blue, #41b5e8) !important; }
 
     .vv-logo { width: 100%; height: auto; overflow: visible; }
-    .vv-logo text { font-family: var(--wp--preset--font-family--body, 'Manrope'), sans-serif; }
   }
 
   &__label {
@@ -186,7 +185,7 @@
       display: block;
       width: 100%;
       height: auto;
-      overflow: visible;
+      overflow: hidden;
       filter: drop-shadow(0 0 calc(var(--vv-seal-glow) * 40px) rgb(242 166 90 / calc(var(--vv-seal-glow) * .25)));
     }
 

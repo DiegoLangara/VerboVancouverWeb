@@ -32,14 +32,15 @@ function vv_logo_svg( $class = 'vv-logo' ) {
  */
 function vv_wordmark_svg( $class = 'vv-wordmark' ) {
   $svg = vv_logo_svg( $class );
-  $svg = preg_replace( '#<text.*?</text>#s', '', $svg );
-  $svg = str_replace( ' role="img" aria-label="Verbo Vancouver"', '', $svg );
+  $svg = str_replace( ' role="img" aria-label="Verbo Vancouver"', ' aria-hidden="true"', $svg );
+  // Recorta "VANCOUVER.CA" y deja solo VERBO
+  $svg = str_replace( 'viewBox="0 0 432 150"', 'viewBox="0 0 432 99" preserveAspectRatio="xMidYMax meet"', $svg );
   $svg = str_replace(
-    '<g fill="currentColor">',
-    '<defs><linearGradient id="vv-seal-gradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6F1EA" stop-opacity=".2"/><stop offset=".75" stop-color="#F6F1EA" stop-opacity="0"/></linearGradient></defs><g fill="url(#vv-seal-gradient)" stroke="rgba(246,241,234,.3)" stroke-width=".5">',
+    '<path fill="currentColor"',
+    '<defs><linearGradient id="vv-seal-gradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6F1EA" stop-opacity=".2"/><stop offset=".75" stop-color="#F6F1EA" stop-opacity="0"/></linearGradient></defs><path fill="url(#vv-seal-gradient)" stroke="rgba(246,241,234,.3)" stroke-width=".35"',
     $svg
   );
-  return str_replace( 'viewBox="178 748 438 156"', 'viewBox="180 750 434 100" preserveAspectRatio="xMidYMax meet" aria-hidden="true"', $svg );
+  return $svg;
 }
 
 /**
