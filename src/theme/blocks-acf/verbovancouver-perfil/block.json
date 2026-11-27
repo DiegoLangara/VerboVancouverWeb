@@ -1,0 +1,44 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "verbovancouver/perfil",
+  "title": "Perfil destacado",
+  "description": "Foto y trayectoria de una persona, por ejemplo el pastor.",
+  "style": "verbovancouver-perfil-css",
+  "script": "verbovancouver-perfil",
+  "category": "verbovancouver-blocks",
+  "icon": "id-alt",
+  "keywords": [
+    "pastor",
+    "perfil",
+    "biografía"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "verbovancouver-perfil.php",
+    "blockVersion": 3,
+    "autoInlineEditing": true,
+    "hideFieldsInSidebar": false
+  },
+  "styles": [],
+  "supports": {
+    "align": [
+      "full"
+    ],
+    "anchor": true,
+    "alignContent": false,
+    "color": {
+      "text": false,
+      "background": false,
+      "link": false
+    },
+    "alignText": false,
+    "fullHeight": false
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    }
+  }
+}

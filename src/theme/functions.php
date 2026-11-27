@@ -378,7 +378,7 @@ class VerboTheme {
 
 
   // Additional custom blocks
-  $custom_blocks = array('accordion', 'hero-luz', 'pilares', 'visita', 'predica', 'comunidad', 'pasos', 'site-header', 'site-footer', 'page-hero', 'seccion-luz');
+  $custom_blocks = array('accordion', 'hero-luz', 'pilares', 'visita', 'predica', 'comunidad', 'pasos', 'site-header', 'site-footer', 'page-hero', 'seccion-luz', 'perfil', 'equipo');
 
   foreach ($custom_blocks as $block) {
     // Register the block

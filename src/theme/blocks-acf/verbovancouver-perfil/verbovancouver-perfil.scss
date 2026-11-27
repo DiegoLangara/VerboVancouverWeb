@@ -1,0 +1,98 @@
+@import "functions";
+@import "../../assets/css/partials/vv-functions";
+
+@import "variables";
+@import "../../assets/css/partials/verbovancouver-variables";
+
+@import "mixins";
+@import "../../assets/css/partials/vv-mixins";
+
+
+.wp-block-vv-perfil {
+  padding-block: var(--section-padding, clamp(5rem, 10vw, 8rem));
+
+  &.is-light {
+    color: var(--vv-night, #0e0b0a);
+    background: var(--vv-cream, #f6f1ea);
+
+    .vv-eyebrow { color: var(--vv-sunset, #d9483b); }
+    .perfil__role { color: rgb(14 11 10 / .6); }
+    .perfil__bio { color: rgb(14 11 10 / .78); }
+    .perfil__quote { border-color: var(--vv-sunset, #d9483b); }
+    .perfil__placeholder { background: rgb(14 11 10 / .08); }
+  }
+
+  &.is-dark {
+    color: var(--vv-cream, #f6f1ea);
+    background: var(--vv-night, #0e0b0a);
+
+    .perfil__role { color: var(--vv-muted, rgb(246 241 234 / .7)); }
+    .perfil__bio { color: var(--vv-muted, rgb(246 241 234 / .7)); }
+    .perfil__quote { border-color: var(--vv-amber, #f2a65a); }
+    .perfil__placeholder { background: rgb(246 241 234 / .08); }
+  }
+
+  .perfil__grid {
+    display: grid;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+
+    @media (min-width: 960px) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
+  }
+
+  &.is-photo-right .perfil__media {
+    @media (min-width: 960px) { order: 2; }
+  }
+
+  .perfil__media {
+    margin: 0;
+    border-radius: 1.25rem;
+    aspect-ratio: 4 / 5;
+
+    @media (max-width: 959px) { max-width: 32rem; }
+
+    img, .perfil__placeholder { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+  }
+
+  .perfil__name { margin-top: .25rem; }
+
+  .perfil__role {
+    margin: 1rem 0 0;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+  }
+
+  .perfil__quote {
+    margin: 2rem 0 0;
+    padding-left: 1.25rem;
+    border-left: 3px solid;
+
+    p {
+      margin: 0;
+      font-size: clamp(1.15rem, 1rem + .6vw, 1.5rem);
+      font-weight: 500;
+      line-height: 1.45;
+    }
+  }
+
+  .perfil__bio {
+    margin-top: 1.75rem;
+    max-width: 38rem;
+    font-size: 1.05rem;
+    line-height: 1.75;
+
+    p, ul, ol { margin: 0 0 1em; }
+    > :last-child { margin-bottom: 0; }
+  }
+}
+
+// Zoom suave de la foto dentro de su contenedor.
+.vv-zoom {
+  overflow: hidden;
+
+  img { transition: transform .7s var(--vv-ease, cubic-bezier(.22, 1, .36, 1)); }
+
+  &:hover img { transform: scale(1.06); }
+}
