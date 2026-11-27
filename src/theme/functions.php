@@ -677,6 +677,7 @@ class VerboTheme {
   // Formidable
   public static function frm_field_input_html( $field, $echo = true ) {
 
+    $html = '';
     if( 'date' === $field['type'] ) {
       $html = ' autocomplete="off"';
     }

@@ -1,0 +1,222 @@
+/*
+ * Sección de contacto: grupo con la clase "form-container" que tiene dos columnas,
+ * una imagen y el formulario de Formidable. Sigue el estilo de "Planea tu visita":
+ * fondo crema, texto noche, foto con bordes redondeados y detalles en rojo atardecer.
+ */
+
+.wp-block-group.form-container {
+  color: var(--vv-night, #0e0b0a);
+  background-color: var(--vv-cream, #f6f1ea);
+
+  // Las columnas quedan a lo ancho del contenido, centradas verticalmente, como en visita.
+  > .wp-block-columns {
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+    margin-block: 0;
+
+    > .wp-block-column { min-width: 0; }
+
+    @media (min-width: 782px) {
+      > .wp-block-column:first-child { flex: 1.05 1 0; }
+      > .wp-block-column:last-child { flex: 1 1 0; }
+    }
+  }
+
+  // Imagen con bordes redondeados y recorte vertical, igual que la foto de visita.
+  .wp-block-image {
+    margin: 0;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+
+    @media (max-width: 781px) { aspect-ratio: 4 / 3; }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+  }
+
+  .wp-block-column .wp-block-group { padding: 0; }
+
+  // Formulario de Formidable con los colores del sitio.
+  .frm_forms.with_frm_style {
+    --font: var(--wp--preset--font-family--main-content, inherit);
+    --font-size: 1rem;
+    --label-color: var(--vv-night, #0e0b0a);
+    --label-padding: 0 0 .5rem 0;
+    --required-color: var(--vv-sunset, #d9483b);
+    --description-color: rgb(14 11 10 / .6);
+    --description-font-size: .875rem;
+    --text-color: var(--vv-night, #0e0b0a);
+    --bg-color: #fff;
+    --bg-color-active: #fff;
+    --border-color: rgb(14 11 10 / .16);
+    --border-color-active: var(--vv-sunset, #d9483b);
+    --border-radius: .75rem;
+    --field-font-size: 1rem;
+    --field-height: 3.25rem;
+    --line-height: 1.4;
+    --field-pad: .85rem 1rem;
+    --field-margin: 1.25rem;
+    --text-color-error: var(--vv-sunset, #d9483b);
+    --border-color-error: var(--vv-sunset, #d9483b);
+    --bg-color-error: #fff;
+    --error-text: var(--vv-sunset, #d9483b);
+    --success-text-color: var(--vv-night, #0e0b0a);
+    --success-bg-color: rgb(242 166 90 / .18);
+    --success-border-color: var(--vv-amber, #f2a65a);
+    --submit-bg-color: var(--vv-night, #0e0b0a);
+    --submit-border-color: var(--vv-night, #0e0b0a);
+    --submit-text-color: var(--vv-cream, #f6f1ea);
+    --submit-hover-bg-color: var(--vv-sunset, #d9483b);
+    --submit-hover-border-color: var(--vv-sunset, #d9483b);
+    --submit-hover-color: var(--vv-cream, #f6f1ea);
+    --submit-active-bg-color: var(--vv-sunset, #d9483b);
+    --submit-active-border-color: var(--vv-sunset, #d9483b);
+    --submit-active-color: var(--vv-cream, #f6f1ea);
+    --submit-border-radius: 999px;
+    --submit-font-size: 1rem;
+    --submit-padding: .9rem 1.75rem;
+    --box-shadow: none;
+
+    color: var(--vv-night, #0e0b0a);
+    font-family: var(--font);
+
+    fieldset { margin: 0; padding: 0; border: 0; }
+
+    .frm_form_title,
+    h3.frm_form_title {
+      margin: 0 0 1.5rem;
+      font-family: $font-family-heading;
+      font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.8rem);
+      font-weight: 700;
+      font-stretch: 75%;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--vv-night, #0e0b0a);
+    }
+
+    .frm_description,
+    .frm_form_description { color: rgb(14 11 10 / .65); }
+
+    // Etiquetas pequeñas en mayúsculas, como los datos de visita (Día, Hora, Lugar).
+    .frm_primary_label {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgb(14 11 10 / .7);
+    }
+
+    .frm_required { color: var(--vv-sunset, #d9483b); }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="number"],
+    input[type="date"],
+    input[type="password"],
+    select,
+    textarea {
+      width: 100%;
+      min-height: var(--field-height);
+      padding: var(--field-pad);
+      font: inherit;
+      font-size: var(--field-font-size);
+      line-height: var(--line-height);
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      box-shadow: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+
+      &::placeholder { color: rgb(14 11 10 / .4); }
+
+      &:focus {
+        outline: none;
+        border-color: var(--border-color-active);
+        box-shadow: 0 0 0 3px rgb(217 72 59 / .15);
+      }
+    }
+
+    textarea { min-height: 9rem; resize: vertical; }
+
+    .frm_blank_field input,
+    .frm_blank_field select,
+    .frm_blank_field textarea { border-color: var(--border-color-error); }
+
+    .frm_error,
+    .frm_error_style {
+      margin-top: .4rem;
+      font-size: .875rem;
+      color: var(--vv-sunset, #d9483b);
+      background: none;
+      border: 0;
+      padding: 0;
+    }
+
+    .frm_message {
+      padding: 1rem 1.25rem;
+      color: var(--vv-night, #0e0b0a);
+      background: rgb(242 166 90 / .18);
+      border: 1px solid var(--vv-amber, #f2a65a);
+      border-radius: .75rem;
+    }
+
+    .frm_checkbox label,
+    .frm_radio label { color: var(--vv-night, #0e0b0a); font-size: 1rem; }
+
+    input[type="checkbox"],
+    input[type="radio"] { accent-color: var(--vv-sunset, #d9483b); }
+
+    // Botón como .vv-btn--dark: noche con texto crema; al pasar el cursor, atardecer.
+    .frm_submit {
+      margin-top: .5rem;
+
+      button,
+      input[type="submit"],
+      .frm_button_submit {
+        display: inline-flex;
+        align-items: center;
+        gap: .6rem;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: var(--submit-padding);
+        font-family: inherit;
+        font-size: var(--submit-font-size);
+        font-weight: 600;
+        line-height: 1.2;
+        color: var(--submit-text-color);
+        background: var(--submit-bg-color);
+        border: 1px solid var(--submit-border-color);
+        border-radius: var(--submit-border-radius);
+        box-shadow: none;
+        cursor: pointer;
+        transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+
+        &::after {
+          content: "→";
+          transition: transform .3s var(--vv-ease, ease);
+        }
+
+        &:hover,
+        &:focus-visible {
+          color: var(--submit-hover-color);
+          background: var(--submit-hover-bg-color);
+          border-color: var(--submit-hover-border-color);
+
+          &::after { transform: translateX(4px); }
+        }
+
+        &:focus-visible { outline: 2px solid var(--vv-sunset, #d9483b); outline-offset: 3px; }
+      }
+    }
+  }
+}
