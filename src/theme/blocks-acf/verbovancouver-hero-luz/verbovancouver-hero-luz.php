@@ -28,9 +28,12 @@ $center    = intdiv( $bars, 2 );
 <section <?php if ( !empty( $block['anchor'] ) ) print 'id="' . esc_attr( $block['anchor'] ) . '" '; ?>class="<?php print esc_attr( implode( ' ', $classes ) ); ?>" data-hero-luz>
   <div class="hero-luz__lights" aria-hidden="true">
     <?php for ( $i = 0; $i < $bars; $i++ ) : ?>
-      <span class="hero-luz__bar<?php print $i === $center ? ' hero-luz__bar--cross' : ''; ?>"></span>
+      <span class="hero-luz__bar"></span>
     <?php endfor; ?>
-    <span class="hero-luz__beam"></span>
+    <span class="hero-luz__cross">
+      <span class="hero-luz__post"></span>
+      <span class="hero-luz__beam"></span>
+    </span>
   </div>
   <div class="hero-luz__content">
     <?php if ( $eyebrow ) : ?><p class="hero-luz__eyebrow skip-observing"><?php print esc_html( $eyebrow ); ?></p><?php endif; ?>

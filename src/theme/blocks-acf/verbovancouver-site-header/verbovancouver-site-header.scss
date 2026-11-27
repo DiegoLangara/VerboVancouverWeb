@@ -75,21 +75,7 @@ $vv-nav-bp: 1100px;
       opacity: .78;
       transition: opacity .25s, color .25s;
 
-      // Línea de luz bajo el enlace
-      &::after {
-        content: '';
-        position: absolute;
-        inset: auto 0 0;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--vv-amber, #f2a65a), transparent);
-        transform: scaleX(0);
-        transition: transform .45s var(--vv-ease);
-      }
-
-      &:hover, &:focus-visible, &[aria-current="page"] {
-        opacity: 1;
-        &::after { transform: scaleX(1); }
-      }
+      &:hover, &:focus-visible, &[aria-current="page"] { opacity: 1; }
 
       &:hover { color: var(--vv-amber, #f2a65a); }
     }

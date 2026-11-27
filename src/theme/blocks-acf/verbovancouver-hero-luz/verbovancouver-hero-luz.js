@@ -16,6 +16,7 @@
     var lights  = hero.querySelector( '.hero-luz__lights' );
     var bars    = hero.querySelectorAll( '.hero-luz__bar' );
     var beam    = hero.querySelector( '.hero-luz__beam' );
+    var post    = hero.querySelector( '.hero-luz__post' );
     var content = hero.querySelector( '.hero-luz__content' );
     var eyebrow = hero.querySelector( '.hero-luz__eyebrow' );
     var rest    = hero.querySelectorAll( '.hero-luz__heading, .hero-luz__text, .hero-luz__actions' );
@@ -31,12 +32,13 @@
     function intro( items ) {
       var tl = gsap.timeline( { defaults: { ease: soft ? 'power1.out' : 'expo.out' } } );
       if ( soft ) {
-        tl.fromTo( bars, { opacity: 0 }, { opacity: function( i, el ) { return el.classList.contains( 'hero-luz__bar--cross' ) ? 1 : 0.6; }, duration: 1, stagger: { each: 0.05, from: 'center' } } )
-          .fromTo( beam, { opacity: 0 }, { opacity: 1, duration: 0.8 }, '-=0.5' )
+        tl.fromTo( bars, { opacity: 0 }, { opacity: 0.6, duration: 1, stagger: { each: 0.05, from: 'center' } } )
+          .fromTo( [ post, beam ], { opacity: 0 }, { opacity: 1, duration: 0.8, stagger: 0.2 }, '-=0.5' )
           .fromTo( items, { opacity: 0 }, { opacity: 1, duration: 0.8, stagger: 0.1 }, '-=0.4' );
       } else {
         tl.from( bars, { scaleY: 0, opacity: 0, duration: 1.6, stagger: { each: 0.06, from: 'center' } } )
-          .from( beam, { scaleX: 0, opacity: 0, duration: 1.2 }, '-=0.8' )
+          .from( post, { scaleY: 0, opacity: 0, duration: 1.1 }, '-=0.9' )
+          .from( beam, { scaleX: 0, opacity: 0, duration: 1 }, '-=0.6' )
           .fromTo( items, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1, stagger: 0.1 }, '-=0.9' );
       }
       return tl;
@@ -107,7 +109,7 @@
     } );
 
     // Respiración de la luz, en todos los tamaños
-    if ( !soft ) gsap.to( hero.querySelectorAll( '.hero-luz__bar:not(.hero-luz__bar--cross)' ), {
+    if ( !soft ) gsap.to( bars, {
       opacity: function() { return gsap.utils.random( 0.35, 0.9 ); },
       duration: function() { return gsap.utils.random( 2, 4 ); },
       repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 2,

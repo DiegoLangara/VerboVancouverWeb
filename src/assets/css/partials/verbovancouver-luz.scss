@@ -25,6 +25,20 @@ body {
 
 ::selection { background: var(--vv-amber); color: var(--vv-night); }
 
+// Enlaces y botones: nunca subrayados; al pasar el cursor solo cambian de color, con una transición corta.
+// :where() no suma especificidad, así cada componente puede definir sus propias transiciones.
+a,
+a:hover,
+a:focus,
+a:focus-visible,
+.wp-block-button__link:hover {
+  text-decoration: none !important;
+}
+
+:where(a, button, .wp-block-button__link, .wp-element-button) {
+  transition: color .2s ease, background-color .2s ease, border-color .2s ease, opacity .2s ease, box-shadow .2s ease;
+}
+
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--vv-blue);

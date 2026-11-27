@@ -48,29 +48,45 @@
 
     &:nth-child(odd) { height: 48vh; }
 
-    // Brazo vertical de la cruz: más ancho y luminoso, y visible también por encima del travesaño
-    &.hero-luz__bar--cross {
-      position: relative;
-      z-index: 1;
-      width: 5px;
-      height: 70vh;
-      opacity: 1 !important;
-      background: linear-gradient(to bottom, rgb(246 241 234 / .15), var(--hl-cream) 6%, var(--hl-cream) 55%, var(--hl-amber) 88%, transparent);
-      box-shadow: 0 0 22px rgb(246 241 234 / .65), 0 0 70px rgb(242 166 90 / .35);
-    }
+  }
+
+  // La cruz es una pieza aparte, encima de las barras animadas, con proporción de cruz latina:
+  // el travesaño mide un 60 % del alto y cruza a un tercio desde arriba.
+  .hero-luz__cross {
+    --cross-h: clamp(13rem, 34vh, 22rem);
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--cross-h) * .6);
+    height: var(--cross-h);
+    transform: translate(-50%, -58%);
+    pointer-events: none;
+  }
+
+  .hero-luz__post,
+  .hero-luz__beam {
+    position: absolute;
+    border-radius: 4px;
+    background: var(--hl-cream);
+    box-shadow: 0 0 18px rgb(246 241 234 / .75), 0 0 60px rgb(242 166 90 / .35);
+  }
+
+  .hero-luz__post {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    margin-left: -2px;
+    transform-origin: 50% 0;
   }
 
   .hero-luz__beam {
-    position: absolute;
-    top: 34%;
-    left: 50%;
-    width: clamp(5rem, 14vw, 11rem);
-    height: 3px;
-    border-radius: 3px;
-    transform: translateX(-50%);
-    z-index: 2;
-    background: var(--hl-cream);
-    box-shadow: 0 0 24px rgb(246 241 234 / .7);
+    top: 30%;
+    left: 0;
+    right: 0;
+    height: 4px;
+    margin-top: -2px;
   }
 
   .hero-luz__content {
@@ -116,7 +132,7 @@
     border-radius: 999px;
     font-weight: 600;
     text-decoration: none;
-    transition: background-color .16s, color .16s, border-color .16s;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
 
     &--primary {
       background: var(--hl-amber);
@@ -178,8 +194,7 @@
 
     .hero-luz__bar { height: 78%; opacity: .45; }
     .hero-luz__bar:nth-child(odd) { height: 62%; }
-    .hero-luz__bar.hero-luz__bar--cross { height: 100%; width: 4px; }
-    .hero-luz__beam { top: 32%; width: 7.5rem; }
+    .hero-luz__cross { --cross-h: 30svh; top: 50%; transform: translate(-50%, -52%); }
 
     .hero-luz__content {
       margin-top: calc(5.25rem + 50svh + 1.75rem);
