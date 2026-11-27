@@ -33,9 +33,9 @@ $center    = intdiv( $bars, 2 );
     <span class="hero-luz__beam"></span>
   </div>
   <div class="hero-luz__content">
-    <?php if ( $eyebrow ) : ?><p class="hero-luz__eyebrow"><?php print esc_html( $eyebrow ); ?></p><?php endif; ?>
-    <?php if ( $heading ) : ?><h1 class="hero-luz__heading"><?php print esc_html( $heading ); ?></h1><?php endif; ?>
-    <?php if ( $text ) : ?><p class="hero-luz__text"><?php print esc_html( $text ); ?></p><?php endif; ?>
+    <?php if ( $eyebrow ) : ?><p class="hero-luz__eyebrow skip-observing"><?php print esc_html( $eyebrow ); ?></p><?php endif; ?>
+    <?php if ( $heading ) : ?><h1 class="hero-luz__heading skip-observing"><?php print esc_html( $heading ); ?></h1><?php endif; ?>
+    <?php if ( $text ) : ?><p class="hero-luz__text skip-observing"><?php print esc_html( $text ); ?></p><?php endif; ?>
     <?php if ( $primary || $secondary ) : ?>
       <div class="hero-luz__actions">
         <?php foreach ( [ 'primary' => $primary, 'secondary' => $secondary ] as $type => $cta ) :
