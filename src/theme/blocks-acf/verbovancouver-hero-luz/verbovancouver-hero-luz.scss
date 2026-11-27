@@ -35,6 +35,12 @@
     justify-content: center;
     align-items: center;
     gap: clamp(1.2rem, 4vw, 3.5rem);
+
+    // En escritorio la luz y la cruz se ubican a la derecha y el texto respira a la izquierda
+    @media (min-width: 782px) {
+      left: 40%;
+      gap: clamp(1rem, 2.6vw, 2.75rem);
+    }
   }
 
   .hero-luz__bar {
@@ -62,6 +68,9 @@
     height: var(--cross-h);
     transform: translate(-50%, -58%);
     pointer-events: none;
+
+    // En escritorio la cruz se corre a la derecha para no cruzarse con el título
+
   }
 
   .hero-luz__post,

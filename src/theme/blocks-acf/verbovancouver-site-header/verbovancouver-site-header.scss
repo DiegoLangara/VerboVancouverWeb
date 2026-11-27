@@ -112,8 +112,9 @@ $vv-nav-bp: 1100px;
     white-space: nowrap;
     transition: background-color .3s, transform .4s var(--vv-ease), box-shadow .4s;
 
-    &:hover {
+    &:hover, &:focus-visible {
       background: var(--vv-cream, #f6f1ea);
+      color: var(--vv-night, #0e0b0a);
       transform: translateY(-1px);
       box-shadow: 0 10px 30px -10px rgb(65 181 232 / .7);
     }
@@ -319,6 +320,8 @@ $vv-nav-bp: 1100px;
     color: var(--vv-night, #0e0b0a);
     font-weight: 700;
     text-decoration: none;
+
+    &:hover, &:focus-visible { background: var(--vv-cream, #f6f1ea); color: var(--vv-night, #0e0b0a); }
   }
 }
 
