@@ -1,0 +1,36 @@
+@import "functions";
+@import "../../assets/css/partials/vv-functions";
+
+@import "variables";
+@import "../../assets/css/partials/verbovancouver-variables";
+
+@import "mixins";
+@import "../../assets/css/partials/vv-mixins";
+.wp-block-vv-social {
+
+    .social-list {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+
+        .social-item {
+            background-color: rgba(255, 255, 255, 0.35);
+            border-radius: 4rem;
+            font-size: rem-calc( 18 );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: rem-calc( 60 );
+            height: rem-calc( 60 );
+
+            color: $black;
+
+            transition: background-color $transition-fast ;
+
+            &:hover {
+                background-color: $white;
+            }
+        }
+    }
+}

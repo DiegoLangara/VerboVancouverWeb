@@ -1,0 +1,105 @@
+@import "functions";
+@import "../../assets/css/partials/vv-functions";
+
+@import "variables";
+@import "../../assets/css/partials/verbovancouver-variables";
+
+@import "mixins";
+@import "../../assets/css/partials/vv-mixins";
+
+$share-svg: btoa( '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 88 41"><path fill="#F1F5F6" d="M.001.5v4.452a19.324 19.324 0 0 0 8.554 16.034L33.246 37.63c6.694 4.518 15.33 4.492 21.999-.061L79.54 20.976C84.833 17.359 88 11.388 88 5.003V.5H.001Z"/></svg>' );
+
+
+.wp-block-vv-social-sharing {
+
+    position: -webkit-sticky;
+    position: sticky;
+    top: 145px; 
+    bottom: 0;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+
+    &.is-sticky {
+        @media (min-width: 1300px) {
+            position: absolute;
+            left: calc(50% - 636px);
+            top: calc(30vh + 60px);
+            bottom: calc(180px + 2rem);
+            height: calc(100% - (30vh + 60px) - (180px + 2rem));
+            width: 90px;
+            margin: 0 !important;
+            padding-bottom: 80px;
+
+            + * {
+                margin-top: 0 !important;
+            }
+        }
+    }
+
+    & &__inner {
+        
+        display: flex;
+        gap: 23px;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        padding: 45px 0;
+        border-radius: 0px;
+
+
+    }
+
+    &.is-sticky &__inner {
+        position: sticky;
+        top: calc( #{$header-height-desktop}    + 60px);
+    }
+
+    .social-label {
+        color: var(--wp--preset--color--green);
+        font-family: "Red Hat Display", sans-serif;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 26px; /* 152.941% */
+        letter-spacing: 1.36px;
+        text-transform: uppercase;
+    }
+
+    hr {
+        width: 100%;
+        height: 1px;
+        border: none;
+        background: rgba(27, 123, 150, 0.20);
+    }
+
+
+    .social-list {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1.5rem;
+        font-size: 1.2rem;
+        line-height: 1;
+
+        .social-item {
+            color: var(--wp--preset--color--green);
+            text-align: center;
+
+            > * {
+                width: 20px;
+                height: 20px;
+                font-size: 20px;
+                text-align: center;
+                color: currentColor;
+            }
+
+            &:hover {
+                color: var(--wp--preset--color--taupe);
+            }
+        }
+    }
+
+    
+}

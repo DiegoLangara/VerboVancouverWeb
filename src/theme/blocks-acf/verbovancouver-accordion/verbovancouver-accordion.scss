@@ -1,0 +1,85 @@
+@import "functions";
+@import "../../assets/css/partials/vv-functions";
+
+@import "variables";
+@import "../../assets/css/partials/verbovancouver-variables";
+
+@import "mixins";
+@import "../../assets/css/partials/vv-mixins";
+
+.wp-block-vv-accordion {
+  margin-top: 30px;
+  @include media-breakpoint-up($breakpoint-tablet) {
+    margin-top: 10px;
+  }
+  .accordion-title,
+  .accordion-body-inner {
+    padding: 20px 10%;
+    background-color: $white;
+    border: 1px solid $heading-color;
+  }
+  .accordion-title {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .accordion-heading {
+      font-weight: 300;
+      color: $heading-color;
+      margin: 0;
+      font-size: 28px;
+      @include media-breakpoint-up($breakpoint-tablet) {
+        font-size: 36px;
+      }
+    }
+    .accordion-icon {
+      position: relative;
+      transition: transform ease-out 275ms;
+      &::before,
+      &::after {
+        content: '';
+        width: 20px;
+        height: 1px;
+        background-color: $heading-color;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &::after {
+        transform: translate(-50%, -50%) rotate(90deg);
+      }
+    }
+    &:hover {
+      .accordion-heading {
+        color: $heading-color;
+      }
+    }
+  }
+  .accordion-body-wrapper {
+    overflow: hidden;
+    height: 0;
+    transition: height ease-out 450ms;
+    margin-top: -1px;
+
+    h4 {
+      font-size: 24px;
+      font-weight: 300;
+    }
+  }
+
+  .accordion-item.open {
+    .accordion-title .accordion-icon {
+      transform: rotate(45deg);
+    }
+    .accordion-body-wrapper {
+      height: var(--body-height);
+    }
+
+
+  }
+
+
+}

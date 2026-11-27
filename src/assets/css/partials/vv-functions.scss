@@ -1,0 +1,109 @@
+@use "sass:math";
+
+@function tracking( $target, $emsize: 1000 ){
+  @if $emsize > 0 { @return  math.div($target, $emsize)  * 1em; }
+  @else { @return 0; }
+}
+
+@function rem-calc( $size ) {
+  $remSize: math.div($size, 16);
+  @return #{$remSize}rem;
+  // @return #{$size}px;
+}
+
+@function vw-calc( $size, $base: 1600 ) {
+
+  $vwSize: math.div($size, 16);
+  @if $base > 0 { $vwSize: math.div($size, $base) * 100; }
+  
+  @return #{$vwSize}vw;
+  
+}
+
+@function transition-map( $properties: [ color ], $timing: $transition-fast, $easing: ease-out, $delay: 0s  ) {
+
+  $str: "";
+  @each $property in $properties {
+    $str:  $str + $property + " " + $timing + " " + $easing + " " + $delay + ", " ;
+  }
+  $str: #{str-slice($str, 0, -2)};
+  
+  @return $str;
+
+}
+
+
+
+// ----
+// Sass (v3.4.9)
+// Compass (v1.0.1)
+// ----
+
+// Sass: placeholder-exists() in Sass.
+//
+// Automatically placeholder-ize duplicated CSS declarations.
+// https://gist.github.com/whizark/720ffec139368fa61932
+//
+// Other ideas
+// https://github.com/whizark/xass#ideas 
+
+// List for Placeholder names.
+$defined-placeholders: ();
+
+// Returns whether a placeholder exists.
+//
+// Note: This cannot check nested (scoped) placeholders.
+@function placeholder-exists($name) {
+  @if index($defined-placeholders, $name) == null {
+    @return false;
+  }
+
+  @return true;
+}
+
+// Registers a placeholder.
+//
+// @access private
+@function register-placeholder($name) {
+  @if placeholder-exists($name) {
+    // @debug "Placeholder #{$name} already exists.";
+  } @else {
+    $defined-placeholders: append($defined-placeholders, $name) !global;
+    // @debug "Registered placeholder #{$name}.";
+  }
+  
+  @return $name;
+}
+
+// Defines a placeholder.
+@mixin define-placeholder($name) {
+
+  @if placeholder-exists($name) == false {
+    %#{$name} {
+      $name: register-placeholder($name);
+
+      @content;
+    }
+  }
+
+}
+
+
+@function svg-btoa($svg) {
+  // Remove 'url()' if already present in the SVG string
+  $svg: str-replace($svg, "url(", "");
+  $svg: str-replace($svg, ")", "");
+  
+  // Base64 encode the SVG
+  $encoded: str-insert("data:image/svg+xml;base64,", btoa($svg), -1);
+  
+  @return url($encoded);
+}
+
+@function bg-url($svg) {
+  @return "url(\'" + $svg + "\')";
+}
+
+@function svg-data($svg){
+  @return "data:image/svg+xml;utf8," + $svg;
+}

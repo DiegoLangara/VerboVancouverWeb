@@ -1,0 +1,76 @@
+@import "functions";
+@import "../../assets/css/partials/vv-functions";
+
+@import "variables";
+@import "../../assets/css/partials/verbovancouver-variables";
+
+@import "mixins";
+@import "../../assets/css/partials/vv-mixins";
+
+.wp-block-link-list {
+  display: flex;
+  flex-direction: column;
+
+  .link-list-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: uppercase;
+    padding: 20px 0;
+    border-bottom: 1px solid #e3e0dd;
+    color: $black;
+    transition: transition-map([color]);
+
+    &:nth-child(1) {
+      border-top: 1px solid #e3e0dd;
+    }
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      @include media-breakpoint-up($breakpoint-mobile) {
+        gap: 40px;
+      }
+
+      img {
+        display: block;
+        height: 40px;
+        width: 40px;
+        object-fit: contain;
+
+        @include media-breakpoint-up($breakpoint-mobile) {
+          height: 50px;
+          width: 50px;
+        }
+      }
+    }
+
+    .link-list-label {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .link-list-cta {
+      display: flex;
+
+      svg {
+        margin-left: 20px;
+        width: 25px;
+
+        @include media-breakpoint-up($breakpoint-mobile) {
+          width: 30px;
+          margin-left: 30px;
+        }
+      }
+    }
+
+    &:hover {
+      color: $black;
+    }
+  }
+
+}

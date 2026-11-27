@@ -1,0 +1,32 @@
+@mixin vw-width( $vw: 100, $tag: width ){
+
+  #{$tag}: #{$vw}vw;
+  #{$tag}: calc(var(--vw,1vw)*#{$vw});
+  
+}
+
+@mixin vh-height( $vh: 100, $tag: height ){
+
+  #{$tag}: #{$vh}vh;
+  #{$tag}: calc(var(--vh,vh)*#{$vh});
+  
+}
+
+@mixin block-fill( $top: 0, $right: 0, $bottom: 0, $left: 0, $position: absolute ) {
+
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+
+}
+
+@mixin svg-icon($svg, $width: 12, $height: 12) {
+  background-image: svg-btoa($svg);
+  width: $width + px;
+  height: $height + px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}

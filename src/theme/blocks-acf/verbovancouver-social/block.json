@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "verbovancouver/social",
+  "title": "Social",
+  "description": "A social block.",
+  "style": "verbovancouver-social-css",
+  "script": "verbovancouver-social",
+  "category": "verbovancouver-blocks",
+  "icon": "",
+  "keywords": ["social"],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "verbovancouver-social.php",
+     "blockVersion": 3,
+    "autoInlineEditing": true,
+    "hideFieldsInSidebar": false
+  },
+  "styles": [],
+  "supports": {
+    "align": false,
+    "anchor": false,
+    "alignContent": false,
+    "color": {
+      "text": false,
+      "background": false,
+      "link": false
+    },
+    "alignText": false,
+    "fullHeight": false
+  },
+  "attributes": {}
+}

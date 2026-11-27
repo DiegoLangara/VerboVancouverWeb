@@ -1,0 +1,35 @@
+@import "functions";
+@import "partials/vv-functions";
+
+@import "variables";
+@import "partials/verbovancouver-variables";
+
+@import "mixins";
+@import "partials/vv-mixins";
+
+@import "./node_modules/@splidejs/splide/dist/css/splide.min";
+@import "partials/vv-lity";
+
+// html, body, header, footer, nav and standard animation
+@import "partials/verbovancouver-general";
+
+// Forms, wp core blocks
+@import "partials/verbovancouver-formidable";
+@import "partials/vv-formidable";
+@import "partials/verbovancouver-common-blocks";
+
+// Select 2
+@import "partials/verbovancouver-select2";
+
+// ACF blocks
+@import "partials/verbovancouver-acf-blocks";
+
+// Page specific styles
+@import "partials/verbovancouver-pages";
+
+
+/* Hacky Microsoft Internet Explorer 11 Overrides */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+}
+
