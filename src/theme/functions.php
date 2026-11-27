@@ -44,6 +44,13 @@ function vv_wordmark_svg( $class = 'vv-wordmark' ) {
 }
 
 /**
+ * Escapa un título y convierte *palabra* en <em>palabra</em> (se pinta en ámbar).
+ */
+function vv_highlight( $text ) {
+  return preg_replace( '/\*([^*]+)\*/', '<em>$1</em>', esc_html( (string) $text ) );
+}
+
+/**
  * Datos de contacto de la iglesia, compartidos por header, footer y bloques.
  */
 function vv_church_info() {
@@ -352,7 +359,7 @@ class VerboTheme {
 
 
   // Additional custom blocks
-  $custom_blocks = array('accordion', 'hero-luz', 'pilares', 'visita', 'predica', 'comunidad', 'pasos', 'site-header', 'site-footer');
+  $custom_blocks = array('accordion', 'hero-luz', 'pilares', 'visita', 'predica', 'comunidad', 'pasos', 'site-header', 'site-footer', 'page-hero', 'seccion-luz');
 
   foreach ($custom_blocks as $block) {
     // Register the block

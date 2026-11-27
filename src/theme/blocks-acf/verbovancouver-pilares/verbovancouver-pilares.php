@@ -13,8 +13,8 @@ if ( !empty( $is_preview ) ) $classes[] = 'is-preview';
 $eyebrow = $fields['eyebrow'] ?? 'Lo que nos mueve';
 $heading = $fields['heading'] ?? 'Tres pilares, una familia';
 $items   = !empty( $fields['items'] ) ? $fields['items'] : [
-  [ 'title' => 'Adoración', 'text' => 'Cultos vibrantes en español. Cada sábado celebramos a Dios con gozo, música y libertad.', 'image' => 'home-adoracion.jpg', 'link' => [ 'url' => '/reuniones/', 'title' => 'Ver reuniones' ] ],
-  [ 'title' => 'Comunidad', 'text' => 'Grupos en casa (IGHO), familias, jóvenes y niños. Nadie camina solo.', 'image' => 'home-comunidad.jpg', 'link' => [ 'url' => '/comunidad/', 'title' => 'Encuentra tu grupo' ] ],
+  [ 'title' => 'Adoración', 'text' => 'Cultos vibrantes en español. Cada sábado celebramos a Dios con gozo, música y libertad.', 'image' => 'home-adoracion.jpg', 'link' => [ 'url' => '/eventos/', 'title' => 'Ver reuniones' ] ],
+  [ 'title' => 'Comunidad', 'text' => 'Grupos en casa (IGHO), familias, jóvenes y niños. Nadie camina solo.', 'image' => 'home-comunidad.jpg', 'link' => [ 'url' => '/igho/', 'title' => 'Encuentra tu grupo' ] ],
   [ 'title' => 'Crecimiento', 'text' => 'Predicaciones y estudios bíblicos prácticos para la vida diaria.', 'image' => 'home-crecimiento.jpg', 'link' => [ 'url' => '/predicas/', 'title' => 'Escuchar prédicas' ] ],
 ];
 ?>

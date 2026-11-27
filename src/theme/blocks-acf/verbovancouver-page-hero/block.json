@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "verbovancouver/page-hero",
+  "title": "Cabecera de página",
+  "description": "Título grande de página interna con barras de luz e imagen.",
+  "style": "verbovancouver-page-hero-css",
+  "script": "verbovancouver-page-hero",
+  "category": "verbovancouver-blocks",
+  "icon": "cover-image",
+  "keywords": [
+    "page-hero"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "verbovancouver-page-hero.php",
+    "blockVersion": 3,
+    "autoInlineEditing": true,
+    "hideFieldsInSidebar": false
+  },
+  "styles": [],
+  "supports": {
+    "align": [
+      "full"
+    ],
+    "anchor": true,
+    "alignContent": false,
+    "color": {
+      "text": false,
+      "background": false,
+      "link": false
+    },
+    "alignText": false,
+    "fullHeight": false
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    }
+  }
+}

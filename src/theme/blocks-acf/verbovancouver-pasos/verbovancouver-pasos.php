@@ -13,9 +13,9 @@ if ( !empty( $is_preview ) ) $classes[] = 'is-preview';
 $eyebrow = $fields['eyebrow'] ?? 'Tu siguiente paso';
 $heading = $fields['heading'] ?? 'Bienvenidos a la familia';
 $items   = !empty( $fields['items'] ) ? $fields['items'] : [
-  [ 'title' => 'Visitar', 'text' => 'Ven este sábado a las 6:00 pm.', 'link' => [ 'url' => '/visitanos/', 'title' => 'Planear mi visita' ] ],
+  [ 'title' => 'Visitar', 'text' => 'Ven este sábado a las 6:00 pm.', 'link' => [ 'url' => '/#visitanos', 'title' => 'Planear mi visita' ] ],
   [ 'title' => 'Conectar', 'text' => 'Únete a un grupo en casa cerca de ti.', 'link' => [ 'url' => '/igho/', 'title' => 'Unirme a un grupo' ] ],
-  [ 'title' => 'Dar', 'text' => 'Sé parte de lo que Dios hace en Vancouver.', 'link' => [ 'url' => '/donaciones/', 'title' => 'Donar en línea' ] ],
+  [ 'title' => 'Dar', 'text' => 'Sé parte de lo que Dios hace en Vancouver.', 'link' => [ 'url' => 'https://tithe.ly/give?c=1647510', 'title' => 'Donar en línea' ] ],
 ];
 ?>
 <section <?php if ( !empty( $block['anchor'] ) ) print 'id="' . esc_attr( $block['anchor'] ) . '" '; ?>class="<?php print esc_attr( implode( ' ', $classes ) ); ?>">

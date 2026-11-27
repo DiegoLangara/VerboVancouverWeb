@@ -19,7 +19,7 @@ if ( !empty( $is_preview ) ) $classes[] = 'is-preview';
 $eyebrow   = $fields['eyebrow'] ?? 'Iglesia Cristiana Verbo Vancouver';
 $heading   = $fields['heading'] ?? 'Bienvenidos a la familia';
 $text      = $fields['text'] ?? 'Un hogar espiritual para latinos en Vancouver. Sábados 6:00 pm.';
-$primary   = !empty( $fields['cta_primary'] ) ? $fields['cta_primary'] : [ 'url' => '/visitanos/', 'title' => 'Planea tu visita' ];
+$primary   = !empty( $fields['cta_primary'] ) ? $fields['cta_primary'] : [ 'url' => '/#visitanos', 'title' => 'Planea tu visita' ];
 $secondary = !empty( $fields['cta_secondary'] ) ? $fields['cta_secondary'] : [ 'url' => '#ultima-predica', 'title' => 'Ver la última prédica' ];
 $bars      = max( 5, min( 21, (int) ( $fields['bars'] ?? 13 ) ) );
 if ( 0 === $bars % 2 ) $bars++;

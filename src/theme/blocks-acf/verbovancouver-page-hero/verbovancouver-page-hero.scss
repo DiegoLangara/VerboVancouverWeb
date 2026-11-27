@@ -1,0 +1,112 @@
+@import "functions";
+@import "../../assets/css/partials/vv-functions";
+
+@import "variables";
+@import "../../assets/css/partials/verbovancouver-variables";
+
+@import "mixins";
+@import "../../assets/css/partials/vv-mixins";
+
+
+.wp-block-vv-page-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: calc(5.25rem + clamp(3rem, 8vw, 6rem)) clamp(4rem, 8vw, 7rem);
+  color: var(--vv-cream, #f6f1ea);
+  background:
+    radial-gradient(60% 60% at 80% 10%, rgb(108 75 216 / .28), transparent 70%),
+    radial-gradient(45% 45% at 0% 70%, rgb(242 166 90 / .14), transparent 70%),
+    var(--vv-night, #0e0b0a);
+  isolation: isolate;
+
+  .page-hero__lights {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    display: flex;
+    justify-content: space-evenly;
+    pointer-events: none;
+
+    span {
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent, rgb(246 241 234 / .09) 50%, transparent);
+      transform-origin: top;
+      animation: vv-page-hero-bar 1.6s var(--vv-ease, ease) both;
+      animation-delay: calc(var(--i) * 70ms);
+    }
+
+    span:nth-child(5) {
+      width: 2px;
+      background: linear-gradient(180deg, transparent, rgb(242 166 90 / .6) 45%, transparent 90%);
+      box-shadow: 0 0 22px rgb(242 166 90 / .35);
+
+      // En pantallas angostas el haz no cruza el texto
+      @media (max-width: 959px) {
+        height: calc(5.25rem + 2.5rem);
+        background: linear-gradient(180deg, transparent, var(--vv-amber, #f2a65a));
+      }
+    }
+  }
+
+  .page-hero__inner {
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    align-items: end;
+
+    @media (min-width: 960px) { grid-template-columns: 1.25fr 1fr; }
+  }
+
+  .page-hero__title {
+    margin: 0;
+    font-family: var(--wp--preset--font-family--heading, 'Archivo'), sans-serif;
+    font-size: clamp(3.25rem, 1.5rem + 8vw, 9rem);
+    font-stretch: 75%;
+    font-variation-settings: 'wdth' 75;
+    font-weight: 800;
+    line-height: .88;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    text-wrap: balance;
+
+    em { font-style: normal; color: var(--vv-amber, #f2a65a); }
+  }
+
+  .page-hero__text {
+    max-width: 36rem;
+    margin: 1.75rem 0 0;
+    color: var(--vv-muted, rgb(246 241 234 / .7));
+    font-size: clamp(1.05rem, 1rem + .4vw, 1.3rem);
+    line-height: 1.6;
+  }
+
+  .page-hero__media {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 4 / 5;
+    max-height: 34rem;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%);
+
+    @media (max-width: 959px) { aspect-ratio: 16 / 10; }
+
+    img { width: 100%; height: 100%; object-fit: cover; }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgb(14 11 10 / .55));
+    }
+  }
+}
+
+@keyframes vv-page-hero-bar {
+  from { transform: scaleY(0); opacity: 0; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-block-vv-page-hero .page-hero__lights span { animation: none; }
+}

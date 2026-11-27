@@ -16,12 +16,12 @@ $text    = $fields['text'] ?? 'Desde los más pequeños hasta los abuelos: crece
 $img     = !empty( $fields['image'] ) ? wp_get_attachment_image_url( $fields['image'], 'large' ) : vv_theme_image( 'home-familia.jpg' );
 $items   = !empty( $fields['items'] ) ? $fields['items'] : [
   [ 'title' => 'IGHO', 'tag' => 'Iglesias en el hogar', 'url' => '/igho/' ],
-  [ 'title' => 'Verbo Kids', 'tag' => '0 a 11 años', 'url' => '/ministerios/verbo-kids/' ],
-  [ 'title' => 'Verbo Juniors', 'tag' => '12 a 14 años', 'url' => '/ministerios/verbo-juniors/' ],
-  [ 'title' => 'Verbo Youth', 'tag' => '15 a 19 años', 'url' => '/ministerios/verbo-youth/' ],
-  [ 'title' => 'Matrimonios', 'tag' => 'Parejas', 'url' => '/ministerios/matrimonios/' ],
-  [ 'title' => 'Mujeres y Hombres', 'tag' => 'Adultos', 'url' => '/ministerios/adultos/' ],
-  [ 'title' => 'Alabanza y Danza', 'tag' => 'Servir con talentos', 'url' => '/ministerios/alabanza/' ],
+  [ 'title' => 'Verbo Kids', 'tag' => '0 a 11 años', 'url' => '/ministerios/#kids' ],
+  [ 'title' => 'Verbo Juniors', 'tag' => '12 a 14 años', 'url' => '/ministerios/#youth' ],
+  [ 'title' => 'Verbo Youth', 'tag' => '15 a 19 años', 'url' => '/ministerios/#youth' ],
+  [ 'title' => 'Matrimonios', 'tag' => 'Parejas', 'url' => '/ministerios/#matrimonios' ],
+  [ 'title' => 'Mujeres y Hombres', 'tag' => 'Adultos', 'url' => '/ministerios/#mujeres' ],
+  [ 'title' => 'Alabanza y Danza', 'tag' => 'Servir con talentos', 'url' => '/ministerios/#alabanza' ],
 ];
 ?>
 <section <?php if ( !empty( $block['anchor'] ) ) print 'id="' . esc_attr( $block['anchor'] ) . '" '; ?>class="<?php print esc_attr( implode( ' ', $classes ) ); ?>">
